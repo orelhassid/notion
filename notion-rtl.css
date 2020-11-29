@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Bebas+Neue&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
+.notranslate {
+  font-family: "Acme", "Rubik", cursive !important;
+}
+.notion-page-block > div {
+  font-family: "Acme", "Rubik", cursive !important;
+  text-align: center !important;
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.notion-quote-block > div > div {
+  border-right: 3px solid currentcolor;
+  border-left: 0px solid currentcolor !important;
+}
+
+.notion-page-content {
+  direction: rtl;
+  text-align: right;
+}
+.notranslate {
+  text-align: right !important;
+}
+
+.notion-scroller > div > div:nth-child(2) > .notion-record-icon[role="button"] {
+  width: 100% !important;
+}
+
+.notion-scroller:nth-child(2) {
+  direction: ltr;
+}
+.notion-frame .notion-scroller > div {
+  direction: rtl;
+}
+.vertical {
+  direction: ltr;
+}
+
+.notion-code-block div {
+  text-align: left !important;
+  direction: ltr;
+}
+.notion-collection-item {
+  direction: rtl;
+}
+
+div[data-block-id="7497a45d-3694-455c-88e9-0eec49f4fa91"] * {
+  text-align: center !important;
+}
+
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
