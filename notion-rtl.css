@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Acme&family=Bebas+Neue&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
+body {
+  background-color: antiquewhite;
+}
 .notranslate {
   font-family: "Acme", "Rubik", cursive !important;
 }
