@@ -63,6 +63,11 @@ Light: bg = #FDF6E3, text =
   text-align: right !important;
 }
 
+/* Notion List */
+.notion-numbered_list-block * {
+  text-align: right !important;
+}
+
 .notion-scroller > div > div:nth-child(2) > .notion-record-icon[role="button"] {
   width: 100% !important;
 }
