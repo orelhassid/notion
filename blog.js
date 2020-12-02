@@ -9,23 +9,16 @@ const MY_DOMAIN = "orelhassid.com";
  * The value on the right is the Notion page ID
  */
 const SLUG_TO_PAGE = {
-  "": "e0da8a3ac21243f084831c280f6617e7",
-  he: "b3b71c5cb2e844df97152875162b7491",
-  "he/home": "a3a29e37f903429c80311dc8761520b6",
-  "he/about": "699c42815294422183a44637ee50e230",
+  "": "771ef38657244c27b9389734a9cbff44",
   "he/blog": "2334a4aa0060451fb6bb57e7507aa875",
-  en: "4e6cba869fb0442b9d2d976fa1b3ca84",
-  home: "74ab153369524406b1cee0e545a36ce2",
-  about: "d1957d2251964f6a8b58156de7fc3733",
 };
 
 /* Step 3: enter your page title and description for SEO purposes */
-const PAGE_TITLE = "Orel Hassid";
-const PAGE_DESCRIPTION =
-  "Tips and tricks about web technologies, Graphics Design, productive and more";
+const PAGE_TITLE = "";
+const PAGE_DESCRIPTION = "";
 
 /* Step 4: enter a Google Font name, you can choose from https://fonts.google.com */
-const GOOGLE_FONT = "Rubik";
+const GOOGLE_FONT = "";
 
 /* Step 5: enter any custom scripts you'd like */
 const CUSTOM_SCRIPT = ``;
@@ -189,26 +182,17 @@ class HeadRewriter {
         }
       );
     }
-    // 3 = Search Button
-    // 4 = Duplicate Button
-    // 5 = Divider
-    // 6 = Notion Logo
     element.append(
       `<style>
       div.notion-topbar > div > div:nth-child(3) { display: none !important; }
       div.notion-topbar > div > div:nth-child(4) { display: none !important; }
+      div.notion-topbar > div > div:nth-child(5) { display: none !important; }
       div.notion-topbar > div > div:nth-child(6) { display: none !important; }
       div.notion-topbar-mobile > div:nth-child(3) { display: none !important; }
       div.notion-topbar-mobile > div:nth-child(4) { display: none !important; }
       div.notion-topbar > div > div:nth-child(1n).toggle-mode { display: block !important; }
       div.notion-topbar-mobile > div:nth-child(1n).toggle-mode { display: block !important; }
       </style>`,
-      {
-        html: true,
-      }
-    );
-    element.append(
-      `<link href="https://orelhassid.github.io/notion/notion-rtl.css" rel="stylesheet">`,
       {
         html: true,
       }
@@ -266,11 +250,11 @@ class BodyRewriter {
         }
       }
       function addDarkModeButton(device) {
-        onDark();
         const nav = device === 'web' ? document.querySelector('.notion-topbar').firstChild : document.querySelector('.notion-topbar-mobile');
         el.className = 'toggle-mode';
         el.addEventListener('click', toggle);
         nav.appendChild(el);
+        onLight();
       }
       const observer = new MutationObserver(function() {
         if (redirected) return;
