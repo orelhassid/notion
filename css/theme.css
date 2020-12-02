@@ -1,0 +1,72 @@
+/* Created by: Orel Hassid 2020 */
+/* Import fonts from Google Fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Acme&family=Bebas+Neue&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+
+/* 
+Themes:
+Dark: bg = #1F2430
+Light: bg = #FDF6E3, text = 
+*/
+:root {
+  --bg: #1f2430;
+  --color: #fff;
+  --link-color: #639a67;
+  --link-hover: #205d67;
+}
+
+/* Page Body: Change Font */
+.notranslate {
+  font-family: "Acme", "Rubik", cursive !important;
+}
+
+.notion-frame {
+  background: var(--bg) !important;
+  color: var(--color) !important;
+}
+.notion-sidebar-container {
+  background: var(--bg) !important;
+}
+
+.notion-collection_view-block > div {
+  background: var(--bg) !important;
+}
+
+/* Page Title: Change Font */
+.notion-page-block {
+  text-align: center !important;
+  font-family: "Acme", "Rubik", cursive !important;
+  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+    both;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+.notion-topbar * {
+  color: inherit !important;
+}
+
+/*
+ * ----------------------------------------
+ * animation scale-up-center
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
