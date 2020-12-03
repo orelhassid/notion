@@ -1,7 +1,7 @@
 /* Created by: Orel Hassid 2020 */
 /* Import fonts from Google Fonts */
 
-@import url("https://fonts.googleapis.com/css2?family=Acme&family=Bebas+Neue&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Acme&family=Bebas+Neue&family=Rubik:wght@300;400;500;600;700;800;900&display=swap"); */
 
 /* 
 Themes:
@@ -40,7 +40,13 @@ Light: bg = #FDF6E3, text =
     both;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 }
-/* ---------------------------------- Check --------------------------------- */
+
+/* Page Icon */
+.notion-scroller.vertical.horizontal .notion-record-icon {
+  position: absolute;
+  transform: translateX(50%);
+  right: 50%;
+}
 
 /*
  * ----------------------------------------

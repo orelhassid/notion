@@ -38,10 +38,6 @@
   text-align: right !important;
 }
 
-.notion-scroller > div > div:nth-child(2) > .notion-record-icon[role="button"] {
-  width: 100% !important;
-}
-
 /* Page Props */
 .notion-scroller:nth-child(2) {
   direction: ltr;
