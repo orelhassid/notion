@@ -43,9 +43,9 @@ Light: bg = #FDF6E3, text =
 
 /* Page Icon */
 .notion-scroller.vertical.horizontal .notion-record-icon {
-  position: absolute;
+  /* position: absolute;
   transform: translateX(50%);
-  right: 50%;
+  right: 50%; */
 }
 
 /*
