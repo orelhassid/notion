@@ -51,6 +51,18 @@ Light: bg = #FDF6E3, text =
   right: 50%;
 }
 
+.notion-scroller.vertical.horizontal > div:nth-child(1) > div:nth-child(1) {
+  height: 40vh !important;
+}
+
+.notion-scroller.vertical.horizontal > div:nth-child(1) > div:nth-child(1) img {
+  height: 40vh !important;
+}
+.notion-image-block {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
 /*
  * ----------------------------------------
  * animation scale-up-center
