@@ -75,3 +75,12 @@
 .notion-table-view {
   float: right !important ;
 }
+
+/* IconsButtons direction */
+.notion-collection-view-select {
+  flex-direction: row-reverse;
+}
+/* Add description button */
+.notion-page-controls > div:nth-child(1) {
+  flex-direction: row-reverse;
+}
