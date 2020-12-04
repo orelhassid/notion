@@ -55,7 +55,12 @@ Light: bg = #FDF6E3, text =
   height: 40vh !important;
 }
 
-.notion-scroller.vertical.horizontal > div:nth-child(1) > div:nth-child(1) img {
+.notion-scroller.vertical.horizontal
+  > div:nth-child(1)
+  > div:nth-child(1)
+  > div
+  > div
+  > img {
   height: 40vh !important;
 }
 .notion-image-block {
