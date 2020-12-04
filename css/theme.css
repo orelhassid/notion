@@ -68,6 +68,24 @@ Light: bg = #FDF6E3, text =
   overflow: hidden;
 }
 
+/* Table */
+.notion-table-view {
+  float: right !important ;
+}
+/* Table Header */
+.notion-table-view .notion-collection_view_page-block > div:nth-child(1) {
+  background: var(--bg) !important;
+}
+.notion-table-view
+  .notion-collection_view_page-block
+  > .notion-table-view-add-row {
+  background: var(--bg) !important;
+}
+
+.notion-table-view .notion-collection_view_page-block > div:nth-last-child(2) {
+  background: var(--bg) !important;
+}
+
 /*
  * ----------------------------------------
  * animation scale-up-center

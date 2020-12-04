@@ -70,3 +70,8 @@
 .notion-collection-view-item-add {
   flex-direction: row-reverse;
 }
+
+/* Table */
+.notion-table-view {
+  float: right !important ;
+}
