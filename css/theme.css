@@ -36,6 +36,9 @@ Light: bg = #FDF6E3, text =
 .notion-page-block {
   text-align: center !important;
   font-family: "Acme", "Rubik", cursive !important;
+}
+
+.notion-selectable.notion-page-block > div.notranslate {
   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
     both;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
