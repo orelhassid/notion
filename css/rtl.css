@@ -24,6 +24,19 @@
   text-align: right;
 }
 
+/* Table Status Footer Alignment */
+
+.notion-collection_view-block > div {
+  background: var(--bg) !important;
+}
+.notion-table-view > .notion-selectable.notion-collection_view-block > div:nth-last-child(2) {
+    padding-right: 0px !important;
+	padding-left: 32px !important;
+}
+.notion-table-view > .notion-selectable.notion-collection_view-block > div:nth-last-child(2) > div div {
+    flex-direction: row-reverse !important;
+}
+
 /* Text */
 .notranslate {
   text-align: right !important;
