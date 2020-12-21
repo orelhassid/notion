@@ -1,99 +1,85 @@
-/* Created by: Orel Hassid */
-/* Import fonts from Google Fonts */
-
-/* Table Alignment  */
-.notion-collection_view-block * {
-  text-align: right !important;
-}
-/* Page Title: Change Font */
-
-/* Page Title: Change Font */
-.notion-page-block {
-  text-align: right !important;
-}
-
-/* Quote Block */
-.notion-quote-block > div > div {
-  border-right: 3px solid currentcolor;
-  border-left: 0px solid currentcolor !important;
-}
-
-/* Content Body */
-.notion-page-content {
-  direction: rtl;
-  text-align: right;
-}
-
-/* Table Status Footer Alignment */
-
-.notion-collection_view-block > div {
-  background: var(--bg) !important;
-}
-.notion-table-view > .notion-selectable.notion-collection_view-block > div:nth-last-child(2) {
-    padding-right: 0px !important;
-	padding-left: 32px !important;
-}
-.notion-table-view > .notion-selectable.notion-collection_view-block > div:nth-last-child(2) > div div {
-    flex-direction: row-reverse !important;
-}
-
-/* Text */
-.notranslate {
-  text-align: right !important;
-}
-
-/* Notion List */
-.notion-numbered_list-block * {
-  text-align: right !important;
-}
-
-.notion-bulleted_list-block * {
-  text-align: right !important;
-}
-
-/* Page Props */
-.notion-scroller:nth-child(2) {
-  direction: ltr;
-}
 /* Page Header */
-.notion-frame .notion-scroller > div {
-  direction: rtl;
-}
-/* Turn into */
-.vertical {
-  direction: ltr;
-}
-
-/* Code Block */
-.notion-code-block div {
-  text-align: left !important;
-  direction: ltr;
-}
-.notion-collection-item {
+div.notion-frame > div:nth-child(2) > div:first-child {
   direction: rtl;
 }
 
-/* Inline-List */
-.notion-collection-item > a > div > div:nth-child(2) {
-  margin-right: 0 !important;
-  flex: 1;
+/* Change Cover button */
+div.notion-frame
+  > div:nth-child(2)
+  > div:first-child
+  > div
+  > div:last-child
+  > div {
+  left: 0px;
+  right: auto !important;
 }
 
-/* notion-collection-view-item-add */
-.notion-collection-view-item-add {
+/* Main Content */
+div.notion-frame div.notion-page-content {
+  direction: rtl;
+}
+div.notion-frame div.notion-page-content div {
+  text-align: right !important;
+}
+
+/* Div Buttons with Icons */
+div.notion-page-controls div[role="button"] > svg
+/* div.notion-collection_view-block div[role="button"][tabindex="0"] > svg */ {
+  margin-left: 6px;
+  margin-right: 0px !important;
+}
+
+/* SIMPLE BLOCKS */
+
+/* Toggle block */
+div.notion-toggle-block div {
+}
+
+/* Quote */
+div.notion-quote-block div.notranslate {
+  border-left: none !important;
+  border-right: 3px solid currentcolor;
+}
+
+/* DATABASES */
+
+/* New Button */
+div.notion-collection_view-block div.notion-collection-view-item-add {
   flex-direction: row-reverse;
+  margin-right: 10px;
+  margin-left: 0px !important;
 }
 
 /* Table */
-.notion-table-view {
-  float: right !important ;
+div.notion-table-view {
+  float: right !important;
+}
+/* Table Header Cells */
+
+div.notion-table-view div.notion-table-view-header-cell > div > div > div {
+  margin-left: 6px;
+  margin-right: 0px !important;
 }
 
-/* IconsButtons direction */
-.notion-collection-view-select {
-  flex-direction: row-reverse;
+div.notion-table-view div.notion-collection-item a {
+  right: auto !important;
+  left: 6px;
 }
-/* Add description button */
-.notion-page-controls > div:nth-child(1) {
-  flex-direction: row-reverse;
+div.notion-table-view > div > div:nth-last-child(2) {
+  padding-right: 0px !important;
+  padding-left: 32px !important;
+}
+div.notion-table-view > div > div:nth-last-child(2) div {
+  flex-direction: row-reverse !important;
+}
+
+/* Gallery */
+div.notion-gallery-view a > div > div:last-child {
+  padding-right: 10px;
+  padding-left: 0px !important;
+}
+
+/* Align Tags Props */
+div.notion-gallery-view a > div > div > div > div > div {
+  margin: 0px !important;
 }
