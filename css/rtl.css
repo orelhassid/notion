@@ -15,6 +15,9 @@ div.notion-frame
 }
 
 /* Main Content */
+div.notion-frame div:nth-child(2) {
+  direction: rtl;
+}
 div.notion-frame div.notion-page-content {
   direction: rtl;
 }
@@ -75,9 +78,6 @@ div.notion-table-view > div > div:nth-last-child(2) div {
 
 /* Gallery */
 
-div.notion-gallery-view div.notion-collection-item {
-  direction: rtl !important;
-}
 div.notion-gallery-view a > div > div:last-child {
   padding-right: 10px;
   padding-left: 0px !important;
