@@ -32,18 +32,6 @@ div.notion-page-controls div[role="button"] > svg
   margin-right: 0px !important;
 }
 
-/* SIMPLE BLOCKS */
-
-/* Toggle block */
-div.notion-toggle-block div {
-}
-
-/* Quote */
-div.notion-quote-block div.notranslate {
-  border-left: none !important;
-  border-right: 3px solid currentcolor;
-}
-
 /* DATABASES */
 
 /* New Button */
@@ -86,4 +74,25 @@ div.notion-gallery-view a > div > div:last-child {
 /* Align Tags Props */
 div.notion-gallery-view a > div > div > div > div > div {
   margin: 0px !important;
+}
+
+/* Page Picker */
+div.notion-peek-renderer > div:nth-child(2) > div.notion-scroller.vertical {
+  direction: rtl;
+}
+
+div.notion-peek-renderer div.notion-page-content div {
+  text-align: right !important;
+}
+
+/* SIMPLE BLOCKS */
+
+/* Toggle block */
+div.notion-toggle-block div {
+}
+
+/* Quote */
+div.notion-quote-block div.notranslate {
+  border-left: none !important;
+  border-right: 3px solid currentcolor;
 }
