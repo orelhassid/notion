@@ -2,6 +2,7 @@
 
 /* Step 1: enter your domain name like fruitionsite.com */
 const MY_DOMAIN = "orelhassid.com";
+// const RTL_SUPPORT = ""
 
 /*
  * Step 2: enter your URL slug to page ID mapping
@@ -17,6 +18,7 @@ const SLUG_TO_PAGE = {
   en: "4e6cba869fb0442b9d2d976fa1b3ca84",
   home: "74ab153369524406b1cee0e545a36ce2",
   about: "d1957d2251964f6a8b58156de7fc3733",
+  "en/blog": "6e8de670f5b441c19f6d1d79fc98691d",
 };
 
 /* Step 3: enter your page title and description for SEO purposes */
@@ -138,7 +140,7 @@ async function fetchAndApply(request) {
     response.headers.delete("X-Content-Security-Policy");
   }
 
-  return appendJavascript(response, SLUG_TO_PAGE);
+  return appendJavascript(response, SLUG_TO_PAGE, request);
 }
 
 class MetaRewriter {
@@ -176,26 +178,19 @@ class MetaRewriter {
 }
 
 class HeadRewriter {
+  constructor(SLUG_TO_PAGE, request) {
+    this.SLUG_TO_PAGE = SLUG_TO_PAGE;
+    this.request = request;
+
+    console.log("Slug HEAD", SLUG_TO_PAGE);
+    console.log("request HEAD", request.url);
+  }
   element(element) {
-    if (GOOGLE_FONT !== "") {
-      element.append(
-        `<link href="https://fonts.googleapis.com/css?family=${GOOGLE_FONT.replace(
-          " ",
-          "+"
-        )}:Regular,Bold,Italic&display=swap" rel="stylesheet">
-        <style>* { font-family: "${GOOGLE_FONT}" !important; }</style>`,
-        {
-          html: true,
-        }
-      );
-    }
-    // 3 = Search Button
-    // 4 = Duplicate Button
-    // 5 = Divider
-    // 6 = Notion Logo
     element.append(
       `<style>
       div.notion-topbar > div > div:nth-child(3) { display: none !important; }
+      div.notion-topbar > div > div:nth-child(4) {  }
+      div.notion-topbar > div > div:nth-child(5) { display: none !important; }
       div.notion-topbar > div > div:nth-child(6) { display: none !important; }
       div.notion-topbar-mobile > div:nth-child(3) { display: none !important; }
       div.notion-topbar-mobile > div:nth-child(4) { display: none !important; }
@@ -206,8 +201,15 @@ class HeadRewriter {
         html: true,
       }
     );
+
     element.append(
-      `<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet">`,
+      `<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,
+      {
+        html: true,
+      }
+    );
+    element.append(
+      `<link href="https://orelhassid.github.io/notion/css/theme.css" rel="stylesheet" />`,
       {
         html: true,
       }
@@ -217,7 +219,16 @@ class HeadRewriter {
 
 class BodyRewriter {
   constructor(SLUG_TO_PAGE) {
+    console.log("Slug BODY", SLUG_TO_PAGE);
     this.SLUG_TO_PAGE = SLUG_TO_PAGE;
+  }
+  element(element) {
+    element.append(
+      `<script src="https://orelhassid.github.io/notion/js/theme.js"></script>`,
+      {
+        html: true,
+      }
+    );
   }
   element(element) {
     element.append(
@@ -229,11 +240,11 @@ class BodyRewriter {
   }
 }
 
-async function appendJavascript(res, SLUG_TO_PAGE) {
+async function appendJavascript(res, SLUG_TO_PAGE, request) {
   return new HTMLRewriter()
     .on("title", new MetaRewriter())
     .on("meta", new MetaRewriter())
-    .on("head", new HeadRewriter())
+    .on("head", new HeadRewriter(SLUG_TO_PAGE, request))
     .on("body", new BodyRewriter(SLUG_TO_PAGE))
     .transform(res);
 }

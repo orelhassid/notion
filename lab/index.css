@@ -1,0 +1,7 @@
+.navigation-container {
+  position: fixed;
+  height: 100%;
+  width: 80px;
+  background-color: red;
+  right: 0;
+}
