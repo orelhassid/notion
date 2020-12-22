@@ -71,6 +71,13 @@ div.notion-gallery-view a > div > div:last-child {
   padding-left: 0px !important;
 }
 
+/* Align Page Icon */
+div.notion-gallery-view div.notion-collection-item div.notion-record-icon {
+  float: right !important;
+  margin-right: -2px !important;
+  margin-left: 4px !important;
+}
+
 /* Align Tags Props */
 div.notion-gallery-view a > div > div > div > div > div {
   margin: 0px !important;
