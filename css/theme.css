@@ -55,6 +55,10 @@ div.notion-frame {
 .notranslate {
   font-family: "Roboto Condensed", "Rubik", cursive !important;
 }
+/* For Theme Toggle Menu */
+div.notion-topbar > div {
+  overflow: visible !important;
+}
 
 div.notion-frame > div.notion-scroller::-webkit-scrollbar {
   width: 0.5em;
