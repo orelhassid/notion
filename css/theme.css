@@ -45,6 +45,12 @@
   --bg-solar: var(--blue);
   --primary: #ff4557; /* red */
 }
+.notion-body.pink {
+  --bg: #292d3e;
+  --bg2: #202331;
+  --text: #a6accd;
+  --primary: #ab47bc;
+}
 
 /* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
 div.notion-frame {
