@@ -1,9 +1,38 @@
-/* Page Header */
+/* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
+
+/* Make sure that icons has spacing */
+div.notion-frame div > svg,
+div.notion-frame div > img {
+  margin-left: 6px;
+}
+
+div.notion-frame a > div > svg,
+div.notion-topbar-more-button > svg {
+  margin-left: 0px !important;
+}
+
+/* -------------------------------- 📌 Navigation 📌 -------------------------------- */
+div.notion-sidebar-container {
+  order: 1;
+}
+
+div.notion-topbar > div:first-child {
+  flex-direction: row-reverse;
+}
+
+div.notion-topbar > div:nth-child(1) > div:nth-child(3) {
+  flex-direction: row-reverse;
+}
+
+div.notion-topbar > div:nth-child(1) > div:nth-child(3) > div {
+  direction: ltr;
+}
+/* -------------------------------- 📌 Page Header 📌 -------------------------------- */
 div.notion-frame > div:nth-child(2) > div:first-child {
   direction: rtl;
 }
 
-/* Change Cover button */
+/* Cover button position */
 div.notion-frame
   > div:nth-child(2)
   > div:first-child
@@ -14,44 +43,27 @@ div.notion-frame
   right: auto !important;
 }
 
+/* -------------------------------- 📌 Page Content 📌 -------------------------------- */
 /* Main Content */
-div.notion-frame div:nth-child(2) {
+div.notion-frame div:nth-child(2),
+div.notion-page-content {
   direction: rtl;
 }
-div.notion-frame div.notion-page-content {
-  direction: rtl;
-}
-div.notion-frame div.notion-page-content div {
+div.notion-page-content div {
   text-align: right !important;
 }
 
-/* Div Buttons with Icons */
-div.notion-page-controls div[role="button"] > svg
-/* div.notion-collection_view-block div[role="button"][tabindex="0"] > svg */ {
-  margin-left: 6px;
-  margin-right: 0px !important;
-}
+/* -------------------------------- 📌 Databases 📌 -------------------------------- */
 
-/* DATABASES */
-
-/* New Button */
-div.notion-collection_view-block div.notion-collection-view-item-add {
-  flex-direction: row-reverse;
-  margin-right: 10px;
-  margin-left: 0px !important;
-}
-
-/* Table */
+/* ---------------------------------- Table --------------------------------- */
 div.notion-table-view {
   float: right !important;
 }
-/* Table Header Cells */
-
+/* Table: Header Cells */
 div.notion-table-view div.notion-table-view-header-cell > div > div > div {
   margin-left: 6px;
   margin-right: 0px !important;
 }
-
 div.notion-table-view div.notion-collection-item a {
   right: auto !important;
   left: 6px;
@@ -64,42 +76,70 @@ div.notion-table-view > div > div:nth-last-child(2) div {
   flex-direction: row-reverse !important;
 }
 
-/* Gallery */
-
+/* --------------------------------- Gallery -------------------------------- */
 div.notion-gallery-view a > div > div:last-child {
   padding-right: 10px;
   padding-left: 0px !important;
 }
+/* Align Tags Props */
+div.notion-gallery-view a > div > div > div > div > div {
+  margin: 0px !important;
+}
+/* -------------------------------- Calendar -------------------------------- */
+/* -------------------------------- List -------------------------------- */
+div:nth-child(2)
+  > div.notion-list-view
+  div.notion-collection-item
+  a
+  > div
+  > div:nth-child(2) {
+  margin-right: 0 !important;
+  margin-left: auto;
+}
 
-/* Align Page Icon */
+/* -------------------------------- 📌 Page Peeker 📌 ------------------------------- */
+div.notion-peek-renderer > div:nth-child(2) > div.notion-scroller.vertical {
+  direction: rtl;
+}
+div.notion-peek-renderer div.notion-page-content div {
+  text-align: right !important;
+}
+
+div.notion-peek-renderer
+  > div
+  > div.notion-scroller
+  > div:nth-child(2)
+  div
+  > svg {
+  margin-left: 6px;
+}
+
+div.notion-page-view-discussion > div > div > div:first-child {
+  margin-right: 0px !important;
+  margin-left: 8px;
+}
+
+/* -------------------------------- 📌 UI: buttons, icons, blocks 📌 -------------------------------- */
+/* Database New Button */
+div.notion-collection_view-block div.notion-collection-view-item-add {
+  flex-direction: row-reverse;
+  margin-right: 10px;
+  margin-left: 0px !important;
+}
+/* Quote */
+div.notion-quote-block div.notranslate {
+  border-left: none !important;
+  border-right: 3px solid currentcolor;
+}
+/* Gallery Page Icon */
 div.notion-gallery-view div.notion-collection-item div.notion-record-icon {
   float: right !important;
   margin-right: -2px !important;
   margin-left: 4px !important;
 }
 
-/* Align Tags Props */
-div.notion-gallery-view a > div > div > div > div > div {
-  margin: 0px !important;
-}
-
-/* Page Picker */
-div.notion-peek-renderer > div:nth-child(2) > div.notion-scroller.vertical {
-  direction: rtl;
-}
-
-div.notion-peek-renderer div.notion-page-content div {
-  text-align: right !important;
-}
-
-/* SIMPLE BLOCKS */
-
-/* Toggle block */
-/* div.notion-toggle-block div {
-} */
-
-/* Quote */
-div.notion-quote-block div.notranslate {
-  border-left: none !important;
-  border-right: 3px solid currentcolor;
+/* Div Buttons with Icons */
+div.notion-page-controls div[role="button"] > svg {
+  margin-left: 6px;
+  margin-right: 0px !important;
 }
