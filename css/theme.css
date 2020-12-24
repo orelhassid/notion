@@ -2,6 +2,7 @@
 
 /* -------------------------------- 📌 Variables: colors, shadow 📌 -------------------------------- */
 :root {
+  --fontFamily: "Roboto Condensed", "Rubik", cursive;
   --gray0: #f8f8f8;
   --gray1: #dbe1e8;
   --gray2: #b2becd;
@@ -27,22 +28,13 @@
 .notion-body {
   --bg: var(--gray0);
   --bg2: var(--gray1);
-  --bg3: #ffffff;
-  --bg-nav: linear-gradient(to right, var(--gray1), var(--gray3));
-  --bg-dropdown: var(--gray0);
   --text: var(--gray6);
-  --border-color: var(--blue);
-  --bg-solar: var(--yellow);
   --primary: #ba68c8; /* purple */
 }
 .notion-body.dark {
   --bg: var(--gray5);
   --bg2: var(--gray4);
-  --bg-nav: linear-gradient(to right, var(--gray5), var(--gray6));
-  --bg-dropdown: var(--gray6);
   --text: var(--gray0);
-  --border-color: var(--purple);
-  --bg-solar: var(--blue);
   --primary: #ff4557; /* red */
 }
 .notion-body.pink {
@@ -56,11 +48,19 @@
 div.notion-frame {
   background: var(--bg) !important;
   color: var(--text) !important;
+  font-family: var(--fontFamily) !important;
 }
 /* Font Family */
 .notranslate {
-  font-family: "Roboto Condensed", "Rubik", cursive !important;
+  font-family: var(--fontFamily) !important;
 }
+div.notion-collection_view_page-block {
+  font-family: var(--fontFamily) !important;
+}
+body {
+  font-family: var(--fontFamily) !important;
+}
+
 /* For Theme Toggle Menu */
 div.notion-topbar > div {
   overflow: visible !important;
@@ -119,7 +119,7 @@ div.notion-gallery-view div.notion-collection-item > a {
 
 div.notion-gallery-view div.notion-collection-item > a:hover {
   transform: scale(1.1);
-  z-index: 2;
+  z-index: 10;
 }
 
 div.notion-gallery-view div.notion-collection-item > a {
