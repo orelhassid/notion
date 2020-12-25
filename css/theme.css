@@ -3,6 +3,7 @@
 /* -------------------------------- 📌 Variables: colors, shadow 📌 -------------------------------- */
 :root {
   --fontFamily: "Roboto Condensed", "Rubik", cursive;
+  --fontFamilyTitle: "Roboto Condensed", "Rubik", cursive;
   --gray0: #f8f8f8;
   --gray1: #dbe1e8;
   --gray2: #b2becd;
