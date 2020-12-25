@@ -1,6 +1,6 @@
 /* CONFIGURATION STARTS HERE */
 
-/* Step 1: enter your domain name like fruitionsite.com */
+/* Step 1: enter your domain name like orelhassid.com */
 const MY_DOMAIN = "orelhassid.com";
 
 /*
@@ -17,18 +17,13 @@ const SLUG_TO_PAGE = {
   en: "4e6cba869fb0442b9d2d976fa1b3ca84",
   home: "74ab153369524406b1cee0e545a36ce2",
   about: "d1957d2251964f6a8b58156de7fc3733",
+  "en/blog": "6e8de670f5b441c19f6d1d79fc98691d",
 };
 
 /* Step 3: enter your page title and description for SEO purposes */
 const PAGE_TITLE = "Orel Hassid";
 const PAGE_DESCRIPTION =
   "Tips and tricks about web technologies, Graphics Design, productive and more";
-
-/* Step 4: enter a Google Font name, you can choose from https://fonts.google.com */
-const GOOGLE_FONT = "Rubik";
-
-/* Step 5: enter any custom scripts you'd like */
-const CUSTOM_SCRIPT = ``;
 
 /* CONFIGURATION ENDS HERE */
 
@@ -123,6 +118,10 @@ async function fetchAndApply(request) {
     });
     response = new Response(response.body, response);
     response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set(
+      "content-security-policy",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://api.amplitude.com https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://api.segment.io https://api.pgncs.notion.so https://checkout.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://api.unsplash.com https://boards-api.greenhouse.io; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+    );
     return response;
   } else if (slugs.indexOf(url.pathname.slice(1)) > -1) {
     const pageId = SLUG_TO_PAGE[url.pathname.slice(1)];
@@ -138,7 +137,7 @@ async function fetchAndApply(request) {
     response.headers.delete("X-Content-Security-Policy");
   }
 
-  return appendJavascript(response, SLUG_TO_PAGE);
+  return appendJavascript(response, SLUG_TO_PAGE, request);
 }
 
 class MetaRewriter {
@@ -176,27 +175,19 @@ class MetaRewriter {
 }
 
 class HeadRewriter {
+  constructor(SLUG_TO_PAGE, request) {
+    this.SLUG_TO_PAGE = SLUG_TO_PAGE;
+    this.request = request;
+
+    console.log("Slug HEAD", SLUG_TO_PAGE);
+    console.log("request HEAD", request.url);
+  }
   element(element) {
-    if (GOOGLE_FONT !== "") {
-      element.append(
-        `<link href="https://fonts.googleapis.com/css?family=${GOOGLE_FONT.replace(
-          " ",
-          "+"
-        )}:Regular,Bold,Italic&display=swap" rel="stylesheet">
-        <style>* { font-family: "${GOOGLE_FONT}" !important; }</style>`,
-        {
-          html: true,
-        }
-      );
-    }
-    // 3 = Search Button
-    // 4 = Duplicate Button
-    // 5 = Divider
-    // 6 = Notion Logo
     element.append(
       `<style>
       div.notion-topbar > div > div:nth-child(3) { display: none !important; }
-      div.notion-topbar > div > div:nth-child(4) { display: none !important; }
+      div.notion-topbar > div > div:nth-child(4) {  }
+      div.notion-topbar > div > div:nth-child(5) { display: none !important; }
       div.notion-topbar > div > div:nth-child(6) { display: none !important; }
       div.notion-topbar-mobile > div:nth-child(3) { display: none !important; }
       div.notion-topbar-mobile > div:nth-child(4) { display: none !important; }
@@ -207,8 +198,15 @@ class HeadRewriter {
         html: true,
       }
     );
+
     element.append(
-      `<link href="https://orelhassid.github.io/notion/notion-rtl.css" rel="stylesheet">`,
+      `<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,
+      {
+        html: true,
+      }
+    );
+    element.append(
+      `<link href="https://orelhassid.github.io/notion/css/theme.css" rel="stylesheet" />`,
       {
         html: true,
       }
@@ -222,13 +220,73 @@ class BodyRewriter {
   }
   element(element) {
     element.append(
-      `<div style="display:none">Powered by <a href="http://fruitionsite.com">Fruition</a></div>
-      <script>
+      `<script src="https://orelhassid.github.io/notion/js/index.js"></script>`,
+      {
+        html: true,
+      }
+    );
+  }
+
+  element(element) {
+    element.append(
+      `<script>
+
+      const dropdown = document.createElement("div");
+
+
+      dropdown.innerHTML = '<div class="dropdown-container"><button id="dropdown-button" class="dropdown-button"><span>Theme</span></button><ul class="dropdown-content" id="dropdown-content"><li id="dark">Dark</li><li id="light">Light</li><li id="pink">Pink</li></ul></div>';
+
+      function createDropdown(device) {
+   
+        const nav = device === 'web' ? document.querySelector('.notion-topbar').firstChild : document.querySelector('.notion-topbar-mobile');
+        nav.appendChild(dropdown); 
+
+        const dropdownButton = document.getElementById("dropdown-button");
+        const dropdownContent = document.getElementById("dropdown-content");
+        
+        dropdownButton.addEventListener("click", toggle);
+
+      var items = Array.from(dropdownContent.children);
+      items.forEach((item) => {
+        item.addEventListener("click", toggle);
+        item.addEventListener("click", () => setTheme(item));
+      });
+      }
+
+
+      function toggle() {
+        const dropdownContent = document.getElementById("dropdown-content");
+        dropdownContent.classList.toggle("show");
+      }
+      function setTheme({id}) {
+        document.body.className = 'notion-body ' + id;
+        switch(id) {
+          case "dark":
+             onDark()
+            break;
+          case "light":
+          onLight()
+            break;
+          case "pink":
+          onDark();
+           break;
+          default:
+          onLight();
+        }
+      }
+      function onDark() {
+        __console.environment.ThemeStore.setState({ mode: 'dark' });
+      };
+      function onLight() {
+        __console.environment.ThemeStore.setState({ mode: 'light' });
+      }
+
+      
+
       const SLUG_TO_PAGE = ${JSON.stringify(this.SLUG_TO_PAGE)};
       const PAGE_TO_SLUG = {};
       const slugs = [];
       const pages = [];
-      const el = document.createElement('div');
       let redirected = false;
       Object.keys(SLUG_TO_PAGE).forEach(slug => {
         const page = SLUG_TO_PAGE[slug];
@@ -248,30 +306,7 @@ class BodyRewriter {
           history.replaceState(history.state, '', '/' + slug);
         }
       }
-      function onDark() {
-        el.innerHTML = '<div style="margin-left: auto; margin-right: 14px; min-width: 0px;"><div role="button" tabindex="0" style="user-select: none; transition: background 120ms ease-in 0s; cursor: pointer; border-radius: 44px;"><div style="display: flex; flex-shrink: 0; height: 14px; width: 26px; border-radius: 44px; padding: 2px; box-sizing: content-box; background: rgb(46, 170, 220); transition: background 200ms ease 0s, box-shadow 200ms ease 0s;"><div style="width: 14px; height: 14px; border-radius: 44px; background: white; transition: transform 200ms ease-out 0s, background 200ms ease-out 0s; transform: translateX(12px) translateY(0px);"></div></div></div></div>';
-        document.body.classList.add('dark');
-        __console.environment.ThemeStore.setState({ mode: 'dark' });
-      };
-      function onLight() {
-        el.innerHTML = '<div style="margin-left: auto; margin-right: 14px; min-width: 0px;"><div role="button" tabindex="0" style="user-select: none; transition: background 120ms ease-in 0s; cursor: pointer; border-radius: 44px;"><div style="display: flex; flex-shrink: 0; height: 14px; width: 26px; border-radius: 44px; padding: 2px; box-sizing: content-box; background: rgba(135, 131, 120, 0.3); transition: background 200ms ease 0s, box-shadow 200ms ease 0s;"><div style="width: 14px; height: 14px; border-radius: 44px; background: white; transition: transform 200ms ease-out 0s, background 200ms ease-out 0s; transform: translateX(0px) translateY(0px);"></div></div></div></div>';
-        document.body.classList.remove('dark');
-        __console.environment.ThemeStore.setState({ mode: 'light' });
-      }
-      function toggle() {
-        if (document.body.classList.contains('dark')) {
-          onLight();
-        } else {
-          onDark();
-        }
-      }
-      function addDarkModeButton(device) {
-        onDark();
-        const nav = device === 'web' ? document.querySelector('.notion-topbar').firstChild : document.querySelector('.notion-topbar-mobile');
-        el.className = 'toggle-mode';
-        el.addEventListener('click', toggle);
-        nav.appendChild(el);
-      }
+
       const observer = new MutationObserver(function() {
         if (redirected) return;
         const nav = document.querySelector('.notion-topbar');
@@ -280,7 +315,7 @@ class BodyRewriter {
           || mobileNav && mobileNav.firstChild) {
           redirected = true;
           updateSlug();
-          addDarkModeButton(nav ? 'web' : 'mobile');
+          createDropdown(nav ? 'web' : 'mobile');
           const onpopstate = window.onpopstate;
           window.onpopstate = function() {
             if (slugs.includes(getSlug())) {
@@ -317,7 +352,7 @@ class BodyRewriter {
         arguments[1] = arguments[1].replace('${MY_DOMAIN}', 'www.notion.so');
         return open.apply(this, [].slice.call(arguments));
       };
-    </script>${CUSTOM_SCRIPT}`,
+    </script>`,
       {
         html: true,
       }
@@ -325,11 +360,11 @@ class BodyRewriter {
   }
 }
 
-async function appendJavascript(res, SLUG_TO_PAGE) {
+async function appendJavascript(res, SLUG_TO_PAGE, request) {
   return new HTMLRewriter()
     .on("title", new MetaRewriter())
     .on("meta", new MetaRewriter())
-    .on("head", new HeadRewriter())
+    .on("head", new HeadRewriter(SLUG_TO_PAGE, request))
     .on("body", new BodyRewriter(SLUG_TO_PAGE))
     .transform(res);
 }

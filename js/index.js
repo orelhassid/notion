@@ -1,42 +1,121 @@
-function addStyle(href, rel) {
-  let linkToAdd = document.createElement("link");
-  linkToAdd.href = href;
-  linkToAdd.rel = "stylesheet";
-  if (rel) linkToAdd.rel = rel;
-  document.head.appendChild(linkToAdd);
-}
+const dropdown = document.createElement("div");
 
-function addScript(script, src) {
-  let scriptToAdd = document.createElement("script");
-  scriptToAdd.type = "text/javascript";
 
-  let inlineScript = document.createTextNode(script);
-  scriptToAdd.appendChild(inlineScript);
+dropdown.innerHTML = '<div class="dropdown-container"><button id="dropdown-button" class="dropdown-button"><span>Theme</span></button><ul class="dropdown-content" id="dropdown-content"><li id="dark">Dark</li><li id="light">Light</li><li id="pink">Pink</li></ul></div>';
 
-  // load script from another source
-  if (src) scriptToAdd.src = src;
+function createDropdown(device) {
 
-  document.head.appendChild(scriptToAdd);
-}
+  const nav = device === 'web' ? document.querySelector('.notion-topbar').firstChild : document.querySelector('.notion-topbar-mobile');
+  nav.appendChild(dropdown); 
 
-function addMetaTags() {
-  let meta = document.createElement("meta");
-  /* <meta http-equiv="Content-Security-Policy" content="
-  style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;">
+  const dropdownButton = document.getElementById("dropdown-button");
+  const dropdownContent = document.getElementById("dropdown-content");
   
-  */
-  meta.httpEquiv = "Content-Security-Policy";
-  meta.content = `style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com`;
+  dropdownButton.addEventListener("click", toggle);
 
-  document.head.appendChild(meta);
+var items = Array.from(dropdownContent.children);
+items.forEach((item) => {
+  item.addEventListener("click", toggle);
+  item.addEventListener("click", () => setTheme(item));
+});
 }
 
-addMetaTags();
-addStyle(`https://fonts.gstatic.com`, "preconnect");
-addStyle(
-  `https://fonts.googleapis.com/css2?family=Acme&family=Rubik:wght@300;400;500;600;700;800;900&display=swap`
-);
 
-addStyle(`https://orelhassid.github.io/notion/css/theme.css`);
-addStyle(`https://orelhassid.github.io/notion/css/rtl.css`);
-addScript(`__console.environment.ThemeStore.setState({ mode: 'dark' });`);
+function toggle() {
+  const dropdownContent = document.getElementById("dropdown-content");
+  dropdownContent.classList.toggle("show");
+}
+function setTheme({id}) {
+  document.body.className = 'notion-body ' + id;
+  switch(id) {
+    case "dark":
+       onDark()
+      break;
+    case "light":
+    onLight()
+      break;
+    case "pink":
+    onDark();
+     break;
+    default:
+    onLight();
+  }
+}
+function onDark() {
+  __console.environment.ThemeStore.setState({ mode: 'dark' });
+};
+function onLight() {
+  __console.environment.ThemeStore.setState({ mode: 'light' });
+}
+
+
+
+const SLUG_TO_PAGE = ${JSON.stringify(this.SLUG_TO_PAGE)};
+const PAGE_TO_SLUG = {};
+const slugs = [];
+const pages = [];
+let redirected = false;
+Object.keys(SLUG_TO_PAGE).forEach(slug => {
+  const page = SLUG_TO_PAGE[slug];
+  slugs.push(slug);
+  pages.push(page);
+  PAGE_TO_SLUG[page] = slug;
+});
+function getPage() {
+  return location.pathname.slice(-32);
+}
+function getSlug() {
+  return location.pathname.slice(1);
+}
+function updateSlug() {
+  const slug = PAGE_TO_SLUG[getPage()];
+  if (slug != null) {
+    history.replaceState(history.state, '', '/' + slug);
+  }
+}
+
+const observer = new MutationObserver(function() {
+  if (redirected) return;
+  const nav = document.querySelector('.notion-topbar');
+  const mobileNav = document.querySelector('.notion-topbar-mobile');
+  if (nav && nav.firstChild && nav.firstChild.firstChild
+    || mobileNav && mobileNav.firstChild) {
+    redirected = true;
+    updateSlug();
+    createDropdown(nav ? 'web' : 'mobile');
+    const onpopstate = window.onpopstate;
+    window.onpopstate = function() {
+      if (slugs.includes(getSlug())) {
+        const page = SLUG_TO_PAGE[getSlug()];
+        if (page) {
+          history.replaceState(history.state, 'bypass', '/' + page);
+        }
+      }
+      onpopstate.apply(this, [].slice.call(arguments));
+      updateSlug();
+    };
+  }
+});
+observer.observe(document.querySelector('#notion-app'), {
+  childList: true,
+  subtree: true,
+});
+const replaceState = window.history.replaceState;
+window.history.replaceState = function(state) {
+  if (arguments[1] !== 'bypass' && slugs.includes(getSlug())) return;
+  return replaceState.apply(window.history, arguments);
+};
+const pushState = window.history.pushState;
+window.history.pushState = function(state) {
+  const dest = new URL(location.protocol + location.host + arguments[2]);
+  const id = dest.pathname.slice(-32);
+  if (pages.includes(id)) {
+    arguments[2] = '/' + PAGE_TO_SLUG[id];
+  }
+  return pushState.apply(window.history, arguments);
+};
+const open = window.XMLHttpRequest.prototype.open;
+window.XMLHttpRequest.prototype.open = function() {
+  arguments[1] = arguments[1].replace('${MY_DOMAIN}', 'www.notion.so');
+  return open.apply(this, [].slice.call(arguments));
+};

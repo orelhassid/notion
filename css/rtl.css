@@ -6,8 +6,10 @@ div.notion-frame div > img {
   margin-left: 6px;
 }
 
+/* ButtonsIcon that need to be centered. */
 div.notion-frame a > div > svg,
-div.notion-topbar-more-button > svg {
+div.notion-topbar-more-button > svg,
+.notion-collection_view-block svg.dots {
   margin-left: 0px !important;
 }
 
@@ -44,13 +46,13 @@ div.notion-frame
 }
 
 /* -------------------------------- 📌 Page Content 📌 -------------------------------- */
-/* Main Content */
-div.notion-frame div:nth-child(2),
-div.notion-page-content {
-  direction: rtl;
+div.notion-frame div:nth-child(2) > div:not(first-child) {
+  direction: rtl !important;
 }
-div.notion-page-content div {
-  text-align: right !important;
+
+/* div.notion-page-content div[contenteditable="true"] */
+div.notion-page-content > div {
+  text-align: right;
 }
 
 /* -------------------------------- 📌 Databases 📌 -------------------------------- */
@@ -85,6 +87,7 @@ div.notion-gallery-view a > div > div:last-child {
 div.notion-gallery-view a > div > div > div > div > div {
   margin: 0px !important;
 }
+
 /* -------------------------------- Calendar -------------------------------- */
 /* -------------------------------- List -------------------------------- */
 div:nth-child(2)
@@ -142,4 +145,16 @@ div.notion-gallery-view div.notion-collection-item div.notion-record-icon {
 div.notion-page-controls div[role="button"] > svg {
   margin-left: 6px;
   margin-right: 0px !important;
+}
+
+/* Code Blocks */
+.notion-code-block {
+  direction: ltr !important;
+  text-align: left;
+}
+
+.notion-numbered_list-block div[contenteditable="true"],
+.notion-bulleted_list-block div[contenteditable="true"],
+.notion-toggle-block div[contenteditable="true"] {
+  text-align: right !important;
 }

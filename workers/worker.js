@@ -125,6 +125,10 @@ async function fetchAndApply(request) {
     });
     response = new Response(response.body, response);
     response.headers.set("Access-Control-Allow-Origin", "*");
+    response.headers.set(
+      "content-security-policy",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://gist.github.com https://apis.google.com https://api.amplitude.com https://widget.intercom.io https://js.intercomcdn.com https://logs-01.loggly.com https://cdn.segment.com https://analytics.pgncs.notion.so https://checkout.stripe.com https://embed.typeform.com https://admin.typeform.com https://platform.twitter.com https://cdn.syndication.twimg.com; connect-src 'self' https://msgstore.www.notion.so wss://msgstore.www.notion.so https://notion-emojis.s3-us-west-2.amazonaws.com https://s3-us-west-2.amazonaws.com https://s3.us-west-2.amazonaws.com https://notion-production-snapshots-2.s3.us-west-2.amazonaws.com https: http: https://api.amplitude.com https://api.embed.ly https://js.intercomcdn.com https://api-iam.intercom.io wss://nexus-websocket-a.intercom.io https://logs-01.loggly.com https://api.segment.io https://api.pgncs.notion.so https://checkout.stripe.com https://cdn.contentful.com https://preview.contentful.com https://images.ctfassets.net https://api.unsplash.com https://boards-api.greenhouse.io; font-src 'self' data: https://cdnjs.cloudflare.com https://js.intercomcdn.com; img-src 'self' data: blob: https: https://platform.twitter.com https://syndication.twitter.com https://pbs.twimg.com https://ton.twimg.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://github.githubassets.com https://platform.twitter.com https://ton.twimg.com; frame-src https: http:; media-src https: http:"
+    );
     return response;
   } else if (slugs.indexOf(url.pathname.slice(1)) > -1) {
     const pageId = SLUG_TO_PAGE[url.pathname.slice(1)];
@@ -233,6 +237,133 @@ class BodyRewriter {
   element(element) {
     element.append(
       `<script src="https://orelhassid.github.io/notion/js/slug.js"></script>`,
+      {
+        html: true,
+      }
+    );
+  }
+
+  element(element) {
+    element.append(
+      `<script>
+      const dropdown = document.createElement("div");
+
+      dropdown.innerHTML = '<div class="dropdown-container"><button id="dropdown-button" class="dropdown-button"><span>Theme Toggle</span></button><ul class="dropdown-content" id="dropdown-content"><li id="dark">Dark</li><li id="light">Light</li><li id="pink">Pink</li></ul></div>';
+
+      function createDropdown(device) {
+        const nav = device === 'web' ? document.querySelector('.notion-topbar').firstChild : document.querySelector('.notion-topbar-mobile');
+        nav.appendChild(dropdown);
+
+        const dropdownButton = document.getElementById("dropdown-button");
+        const dropdownContent = document.getElementById("dropdown-content");
+        dropdownButton.addEventListener("click", toggle);
+        var items = Array.from(dropdownContent.children);
+        items.forEach((item) => {
+          item.addEventListener("click", toggle);
+          item.addEventListener("click", () => setTheme(item));
+        });
+      }
+
+      function toggle() {
+        const dropdownContent = document.getElementById("dropdown-content");
+        dropdownContent.classList.toggle("show");
+      }
+
+      function setTheme({id}) {
+        document.body.className = 'notion-body ' + id;
+        switch(id) {
+          case "dark":
+             onDark()
+            break;
+          case "light":
+          onLight()
+            break;
+          case "pink":
+          onDark()
+           break;
+          default:
+          onLight();
+        }
+      }
+      function onDark() {
+        __console.environment.ThemeStore.setState({ mode: 'dark' });
+      };
+      function onLight() {
+        __console.environment.ThemeStore.setState({ mode: 'light' });
+      }
+
+      
+
+      const SLUG_TO_PAGE = ${JSON.stringify(this.SLUG_TO_PAGE)};
+      const PAGE_TO_SLUG = {};
+      const slugs = [];
+      const pages = [];
+      let redirected = false;
+      Object.keys(SLUG_TO_PAGE).forEach(slug => {
+        const page = SLUG_TO_PAGE[slug];
+        slugs.push(slug);
+        pages.push(page);
+        PAGE_TO_SLUG[page] = slug;
+      });
+      function getPage() {
+        return location.pathname.slice(-32);
+      }
+      function getSlug() {
+        return location.pathname.slice(1);
+      }
+      function updateSlug() {
+        const slug = PAGE_TO_SLUG[getPage()];
+        if (slug != null) {
+          history.replaceState(history.state, '', '/' + slug);
+        }
+      }
+
+      const observer = new MutationObserver(function() {
+        if (redirected) return;
+        const nav = document.querySelector('.notion-topbar');
+        const mobileNav = document.querySelector('.notion-topbar-mobile');
+        if (nav && nav.firstChild && nav.firstChild.firstChild
+          || mobileNav && mobileNav.firstChild) {
+          redirected = true;
+          updateSlug();
+          createDropdown(nav ? 'web' : 'mobile');
+          const onpopstate = window.onpopstate;
+          window.onpopstate = function() {
+            if (slugs.includes(getSlug())) {
+              const page = SLUG_TO_PAGE[getSlug()];
+              if (page) {
+                history.replaceState(history.state, 'bypass', '/' + page);
+              }
+            }
+            onpopstate.apply(this, [].slice.call(arguments));
+            updateSlug();
+          };
+        }
+      });
+      observer.observe(document.querySelector('#notion-app'), {
+        childList: true,
+        subtree: true,
+      });
+      const replaceState = window.history.replaceState;
+      window.history.replaceState = function(state) {
+        if (arguments[1] !== 'bypass' && slugs.includes(getSlug())) return;
+        return replaceState.apply(window.history, arguments);
+      };
+      const pushState = window.history.pushState;
+      window.history.pushState = function(state) {
+        const dest = new URL(location.protocol + location.host + arguments[2]);
+        const id = dest.pathname.slice(-32);
+        if (pages.includes(id)) {
+          arguments[2] = '/' + PAGE_TO_SLUG[id];
+        }
+        return pushState.apply(window.history, arguments);
+      };
+      const open = window.XMLHttpRequest.prototype.open;
+      window.XMLHttpRequest.prototype.open = function() {
+        arguments[1] = arguments[1].replace('${MY_DOMAIN}', 'www.notion.so');
+        return open.apply(this, [].slice.call(arguments));
+      };
+    </script>${CUSTOM_SCRIPT}`,
       {
         html: true,
       }
