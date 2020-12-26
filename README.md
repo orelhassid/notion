@@ -17,8 +17,8 @@ Then configure your website with the following variables:
 3. PAGE_TITLE
 4. PAGE_DESCRIPTION
 
-# How this is works?
+# How does it work?
 In the worker file we are importing/Inject the styling.
-if you want to disable theme or rtl just remove them from the worker. BUT in the future I will make a button that toggle between rtl support.
-`<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,
+if you want to disable theme or rtl just remove them from the worker. BUT in the future I will make a button that toggle between rtl support.  
+`<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,  
 `<link href="https://orelhassid.github.io/notion/css/theme.css" rel="stylesheet" />`
