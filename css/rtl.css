@@ -153,8 +153,8 @@ div.notion-page-controls div[role="button"] > svg {
   text-align: left;
 }
 
-.notion-numbered_list-block div[contenteditable="true"],
-.notion-bulleted_list-block div[contenteditable="true"],
-.notion-toggle-block div[contenteditable="true"] {
+.notion-numbered_list-block div,
+.notion-bulleted_list-block div,
+.notion-toggle-block div {
   text-align: right !important;
 }
