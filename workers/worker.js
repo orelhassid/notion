@@ -178,22 +178,6 @@ class HeadRewriter {
   }
   element(element) {
     element.append(
-      `<style>
-      div.notion-topbar > div > div:nth-child(3) { display: none !important; }
-      div.notion-topbar > div > div:nth-child(4) {  }
-      div.notion-topbar > div > div:nth-child(5) { display: none !important; }
-      div.notion-topbar > div > div:nth-child(6) { display: none !important; }
-      div.notion-topbar-mobile > div:nth-child(3) { display: none !important; }
-      div.notion-topbar-mobile > div:nth-child(4) { display: none !important; }
-      div.notion-topbar > div > div:nth-child(1n).toggle-mode { display: block !important; }
-      div.notion-topbar-mobile > div:nth-child(1n).toggle-mode { display: block !important; }
-      </style>`,
-      {
-        html: true,
-      }
-    );
-
-    element.append(
       `<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,
       {
         html: true,
@@ -216,17 +200,19 @@ class BodyRewriter {
   element(element) {
     element.append(
       `<script>
-          const dropdown = document.createElement("div");
-
+      const features = document.createElement("div");
+      features.className = "topbar-features";
+      features.id = "topbar-features";
+ 
 dropdown.innerHTML =
-  '<div class="dropdown-container"><button id="dropdown-button" class="dropdown-button"><span>Theme</span></button><ul class="dropdown-content" id="dropdown-content"><li id="dark">Dark</li><li id="light">Light</li><li id="palenight">Palenight</li><li id="solarized_light">Solarized Light</li><li id="night_owl">Night Owl</li></ul></div>';
+  '<div class="theme-container"><button id="dropdown-button" class="dropdown-button"><span>Theme</span></button><ul class="dropdown-content" id="dropdown-content"><li id="dark">Dark</li><li id="light">Light</li><li id="palenight">Palenight</li><li id="solarized_light">Solarized Light</li><li id="night_owl">Night Owl</li></ul></div>';
 
 function createDropdown(device) {
   const nav =
     device === "web"
       ? document.querySelector(".notion-topbar").firstChild
       : document.querySelector(".notion-topbar-mobile");
-  nav.appendChild(dropdown);
+  nav.appendChild(features);
 
   const dropdownButton = document.getElementById("dropdown-button");
   const dropdownContent = document.getElementById("dropdown-content");
