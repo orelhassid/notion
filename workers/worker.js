@@ -9,15 +9,9 @@ const MY_DOMAIN = "orelhassid.com";
  * The value on the right is the Notion page ID
  */
 const SLUG_TO_PAGE = {
-  "": "e0da8a3ac21243f084831c280f6617e7",
-  he: "b3b71c5cb2e844df97152875162b7491",
-  "he/home": "a3a29e37f903429c80311dc8761520b6",
-  "he/about": "699c42815294422183a44637ee50e230",
-  "he/blog": "2334a4aa0060451fb6bb57e7507aa875",
-  en: "4e6cba869fb0442b9d2d976fa1b3ca84",
-  home: "74ab153369524406b1cee0e545a36ce2",
-  about: "d1957d2251964f6a8b58156de7fc3733",
-  "en/blog": "6e8de670f5b441c19f6d1d79fc98691d",
+  "": "Page ID",
+  about: "Page ID",
+  "en/blog": "Page ID",
 };
 
 /* Step 3: enter your page title and description for SEO purposes */
