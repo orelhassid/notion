@@ -44,6 +44,26 @@
   --text: #a6accd;
   --primary: #ab47bc;
 }
+body[data-theme="dark"] {
+}
+body[data-theme="palenight"] {
+  --bg: #292d3e;
+  --bg2: #202331;
+  --text: #a6accd;
+  --primary: #ab47bc;
+}
+body[data-theme="solarized_light"] {
+  --bg: #fdf6e3;
+  --bg2: #eee8d5;
+  --text: #586e75;
+  --primary: #d33682;
+}
+body[data-theme="night_owl"] {
+  --bg: #011627;
+  --bg2: ##001424;
+  --text: #b0bec5;
+  --primary: #7e57c2;
+}
 
 /* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
 div.notion-frame {
