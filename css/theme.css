@@ -66,10 +66,10 @@ body[data-theme="night_owl"] {
 }
 
 /* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
-div.notion-topbar-mobile > div:nth-child(2),
-div.notion-topbar-mobile > div:nth-child(3),
-div.notion-topbar-mobile > div:nth-child(4),
-div.notion-topbar-mobile > div:nth-child(5) {
+div.notion-topbar > div:nth-child(2),
+div.notion-topbar > div:nth-child(3),
+div.notion-topbar > div:nth-child(4),
+div.notion-topbar > div:nth-child(5) {
   display: none !important;
 }
 div.notion-topbar > div > div:nth-child(1n).toggle-mode {
