@@ -4,6 +4,7 @@
 :root {
   --fontFamily: "Roboto Condensed", "Rubik", cursive;
   --fontFamilyTitle: "Roboto Condensed", "Rubik", cursive;
+  --coverImageHeight: 40vh;
   --gray0: #f8f8f8;
   --gray1: #dbe1e8;
   --gray2: #b2becd;
@@ -132,13 +133,46 @@ div.notion-frame
   > div:nth-child(1)
   > div
   > img {
-  height: 40vh !important;
+  height: var(--coverImageHeight) !important;
 }
 
 /* Navigation */
 div.notion-sidebar-container {
   background: var(--bg) !important;
 }
+
+/* --------------------------- Header Center Mode --------------------------- */
+/*
+div.notion-frame
+  > div:nth-child(2)
+  > div:first-child
+  > div
+  > div:last-child
+  > div {
+  text-align: center !important;
+}
+
+div.notion-frame
+  > div.notion-scroller.vertical.horizontal
+  > div:nth-child(1)
+  > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.notion-page-controls,
+.notion-page-details-controls {
+  justify-content: center !important;
+}
+div.notion-frame
+  > div.notion-scroller.vertical.horizontal
+  > div:nth-child(1)
+  > div:nth-child(2)
+  .notion-record-icon {
+  align-self: center !important;
+}
+*/
+/* --------------------------- Header Center Mode --------------------------- */
 
 /* -------------------------------- 📌 Databases 📌 -------------------------------- */
 
