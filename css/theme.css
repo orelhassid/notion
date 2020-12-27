@@ -199,13 +199,14 @@ div.notion-calendar-view div.notion-collection_view_page-block > div {
 /* --------------------------------- Gallery -------------------------------- */
 div.notion-gallery-view div.notion-collection-item > a {
   box-shadow: var(--shadow1) !important;
+  background: var(--bg) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   border-radius: 18px !important;
   overflow: hidden !important;
 }
 
 div.notion-gallery-view div.notion-collection-item > a:hover {
-  transform: scale(1.1);
+  transform: scale(1.02);
   z-index: 10;
 }
 
