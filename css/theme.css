@@ -118,6 +118,19 @@ div.notion-scroller::-webkit-scrollbar-thumb {
   background-color: var(--bg2);
 }
 
+#notion-app
+  > div
+  > div.notion-overlay-container.notion-default-overlay-container
+  > div:nth-child(2)
+  > div
+  > div:nth-child(2)
+  > div:nth-child(2)
+  > div
+  > div
+  > div {
+  background-color: var(--bg) !important;
+}
+
 /* -------------------------------- 📌 Page Header 📌 -------------------------------- */
 /* Cover Image */
 div.notion-frame
