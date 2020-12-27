@@ -107,14 +107,14 @@ div.notion-topbar > div {
   overflow: visible !important;
 }
 
-div.notion-frame > div.notion-scroller::-webkit-scrollbar {
+div.notion-scroller::-webkit-scrollbar {
   width: 0.5em;
 }
 
-div.notion-frame > div.notion-scroller::-webkit-scrollbar-track {
+div.notion-scroller::-webkit-scrollbar-track {
 }
 
-div.notion-frame > div.notion-scroller::-webkit-scrollbar-thumb {
+div.notion-scroller::-webkit-scrollbar-thumb {
   background-color: var(--bg2);
 }
 
