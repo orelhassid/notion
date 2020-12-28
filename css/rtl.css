@@ -15,15 +15,12 @@ div.notion-topbar-more-button > svg,
 
 /* -------------------------------- 📌 Navigation 📌 -------------------------------- */
 div.notion-sidebar-container {
-  order: 1;
+  /* order: 1; */
 }
 
-div.notion-topbar > div:first-child {
-  flex-direction: row-reverse;
-}
-
+div.notion-topbar > div:first-child,
 div.notion-topbar > div:nth-child(1) > div:nth-child(3) {
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
 }
 
 div.notion-topbar > div:nth-child(1) > div:nth-child(3) > div {
@@ -90,16 +87,10 @@ div.notion-gallery-view a > div > div > div > div > div {
 
 /* -------------------------------- Calendar -------------------------------- */
 /* -------------------------------- List -------------------------------- */
-div:nth-child(2)
-  > div.notion-list-view
-  div.notion-collection-item
-  a
-  > div
-  > div:nth-child(2) {
+div.notion-list-view div.notion-collection-item a > div > div:nth-child(2) {
   margin-right: 0 !important;
   margin-left: auto;
 }
-
 /* -------------------------------- 📌 Page Peeker 📌 ------------------------------- */
 div.notion-peek-renderer > div:nth-child(2) > div.notion-scroller.vertical {
   direction: rtl;
@@ -155,6 +146,7 @@ div.notion-page-controls div[role="button"] > svg {
 
 .notion-numbered_list-block div,
 .notion-bulleted_list-block div,
-.notion-toggle-block div {
+.notion-toggle-block div,
+.notion-to_do-block div {
   text-align: right !important;
 }
