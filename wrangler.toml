@@ -1,0 +1,6 @@
+name = "notion-worker"
+type = "javascript"
+account_id = "61a27e23f4510a46dd7721ac734d70fd"
+workers_dev = true
+route = "dev.orelhassid.com/*"
+zone_id = ""
