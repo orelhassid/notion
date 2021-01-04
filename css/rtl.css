@@ -1,17 +1,21 @@
 /* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
-
 /* Make sure that icons has spacing */
 div.notion-frame div > svg,
 div.notion-frame div > img {
   margin-left: 6px;
 }
 
+div > svg.dots,
+div.notion-frame div > svg.dragHandle,
+div.notion-collection-view-item-add svg {
+  margin-left: 0px !important;
+}
 /* ButtonsIcon that need to be centered. */
-div.notion-frame a > div > svg,
+/* div.notion-frame a > div > svg,
 div.notion-topbar-more-button > svg,
 .notion-collection_view-block svg.dots {
   margin-left: 0px !important;
-}
+} */
 
 /* -------------------------------- 📌 Navigation 📌 -------------------------------- */
 div.notion-sidebar-container {
@@ -25,6 +29,10 @@ div.notion-topbar > div:nth-child(1) > div:nth-child(3) {
 
 div.notion-topbar > div:nth-child(1) > div:nth-child(3) > div {
   direction: ltr;
+}
+
+div.notion-topbar > div > div:first-child {
+  flex-direction: row-reverse;
 }
 /* -------------------------------- 📌 Page Header 📌 -------------------------------- */
 div.notion-frame > div:nth-child(2) > div:first-child {
@@ -86,6 +94,11 @@ div.notion-gallery-view a > div > div > div > div > div {
 }
 
 /* -------------------------------- Calendar -------------------------------- */
+
+div.notion-calendar-view > div.notion-collection_view_page-block > div > div {
+  flex-direction: row-reverse;
+}
+
 /* -------------------------------- List -------------------------------- */
 div.notion-list-view div.notion-collection-item a > div > div:nth-child(2) {
   margin-right: 0 !important;
@@ -103,7 +116,7 @@ div.notion-peek-renderer
   > div
   > div.notion-scroller
   > div:nth-child(2)
-  div
+  div:first-child
   > svg {
   margin-left: 6px;
 }
@@ -149,4 +162,11 @@ div.notion-page-controls div[role="button"] > svg {
 .notion-toggle-block div,
 .notion-to_do-block div {
   text-align: right !important;
+}
+
+/* Comments */
+.notion-page-view-discussion > div > div > div:last-child {
+  left: 0px;
+  right: auto !important;
+  flex-direction: row-reverse;
 }
