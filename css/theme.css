@@ -67,24 +67,6 @@ body[data-theme="night_owl"] {
 }
 
 /* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
-div.notion-topbar > div > div:nth-child(1) {
-  margin-left: auto;
-}
-div.notion-topbar > div > div:nth-child(2),
-div.notion-topbar > div > div:nth-child(3),
-div.notion-topbar > div > div:nth-child(5),
-div.notion-topbar > div > div:nth-child(6) {
-  display: none !important;
-}
-div.notion-topbar > div > div:nth-child(1n).toggle-mode {
-  display: block !important;
-}
-div.notion-topbar-mobile > div:nth-child(1n).toggle-mode {
-  display: block !important;
-}
-div#topbar-features {
-  display: block !important;
-}
 
 div.notion-frame {
   background: var(--bg) !important;
@@ -129,6 +111,50 @@ div.notion-scroller::-webkit-scrollbar-thumb {
   > div
   > div {
   background-color: var(--bg) !important;
+}
+@media print {
+  div.notion-frame,
+  body,
+  div.notion-page-content {
+    background: var(--bg) !important;
+    /*         background: red !important;    */
+    -webkit-print-color-adjust: exact;
+  }
+  body {
+    padding-top: 80px !important;
+  }
+}
+
+div.notion-overlay-container.notion-default-overlay-container
+  > div
+  > div
+  > div
+  > div:nth-child(2)
+  > div
+  > div
+  > div {
+  background-color: var(--bg) !important;
+  color: var(--text) !important;
+}
+
+/* -------------------------------- 📌 Notion Topbar 📌 -------------------------------- */
+div.notion-topbar > div > div:nth-child(1) {
+  margin-left: auto;
+}
+div.notion-topbar > div > div:nth-child(2),
+div.notion-topbar > div > div:nth-child(3),
+div.notion-topbar > div > div:nth-child(5),
+div.notion-topbar > div > div:nth-child(6) {
+  display: none !important;
+}
+div.notion-topbar > div > div:nth-child(1n).toggle-mode {
+  display: block !important;
+}
+div.notion-topbar-mobile > div:nth-child(1n).toggle-mode {
+  display: block !important;
+}
+div#topbar-features {
+  display: block !important;
 }
 
 /* -------------------------------- 📌 Page Header 📌 -------------------------------- */
@@ -191,10 +217,11 @@ div.notion-frame
 
 /* ---------------------------------- Table --------------------------------- */
 div.notion-table-view > div.notion-collection_view-block > div,
-div.notion-table-view div.notion-collection_view_page-block > div,
-div.notion-calendar-view div.notion-collection_view_page-block > div {
+div.notion-table-view div.notion-collection_view_page-block > div {
   background: var(--bg) !important;
 }
+/* div.notion-calendar-view div.notion-collection_view_page-block > div */
+/* div.notion-calendar-view div.notion-collection_view_page-block > div */
 
 /* --------------------------------- Gallery -------------------------------- */
 div.notion-gallery-view div.notion-collection-item > a {
@@ -206,7 +233,7 @@ div.notion-gallery-view div.notion-collection-item > a {
 }
 
 div.notion-gallery-view div.notion-collection-item > a:hover {
-  transform: scale(1.02);
+  transform: scale(1.01);
   z-index: 10;
 }
 
@@ -240,9 +267,36 @@ div.notion-calendar-view div.notion-collection-item > a {
 
 /* -------------------------------- 📌 Page Peeker 📌 ------------------------------- */
 div.notion-peek-renderer > div:nth-child(2) {
+  background: var(--bg) !important;
+
   -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
     both;
   animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+}
+
+#notion-app
+  > div
+  > div.notion-overlay-container.notion-default-overlay-container
+  > div:nth-child(2)
+  > div
+  > div:nth-child(2)
+  > div:nth-child(1)
+  > div:nth-child(1)
+  > div:nth-child(3) {
+  background: inherit !important;
+}
+
+.notion-peek-renderer > div:nth-child(2) > div:first-child {
+  background: var(--bg2) !important;
+}
+.notion-overlay-container > :last-child {
+  background: inherit !important;
+}
+.notion-peek-renderer > div:nth-child(2) > div:first-child div {
+  /*     color: var(--gray6) !important; */
+}
+.notion-peek-renderer > div:nth-child(2) > div:first-child div:hover {
+  background: inherit !important;
 }
 
 /* ---------------------------- 📌 UIs: buttons, icons, images 📌 --------------------------- */
