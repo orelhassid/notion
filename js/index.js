@@ -1,4 +1,6 @@
 window.addEventListener("DOMContentLoaded", (event) => {
+  let script = document.querySelector("script"); // Analytics
+  script.remove();
   console.log("DOM fully loaded and parsed");
 
   const coverImage = document.querySelector(
