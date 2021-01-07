@@ -1,4 +1,4 @@
-window.addEventListener("DOMContentLoaded", (event) => {
+if (document.readyState === "complete") {
   let scripts = document.querySelectorAll("script"); // Analytics
   scripts = Array.from(scripts);
   let anaylitcScript = scripts.find((s) => s.async);
@@ -12,4 +12,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
   let meta = document.querySelector("meta[property='og:image']");
 
   meta.content = coverImage.src;
-});
+}
