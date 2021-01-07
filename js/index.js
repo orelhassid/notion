@@ -1,7 +1,11 @@
-const coverImage = document.querySelector(
-  "div.notion-frame > div.notion-scroller.vertical.horizontal > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > img"
-);
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("DOM fully loaded and parsed");
 
-let meta = document.querySelector("meta[property='og:image']");
+  const coverImage = document.querySelector(
+    "div.notion-frame > div.notion-scroller.vertical.horizontal > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div > img"
+  );
 
-meta.content = coverImage.src;
+  let meta = document.querySelector("meta[property='og:image']");
+
+  meta.content = coverImage.src;
+});
