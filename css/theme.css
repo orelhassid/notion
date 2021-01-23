@@ -175,6 +175,12 @@ div.notion-frame
   height: var(--coverImageHeight) !important;
 }
 
+/* Page Title */
+div[placeholder="Untitled"] {
+  left: 0px;
+  right: center !important;
+}
+
 /* Navigation */
 div.notion-sidebar-container {
   background: var(--bg) !important;
@@ -217,7 +223,18 @@ div.notion-frame
 
 /* ---------------------------------- Table --------------------------------- */
 div.notion-table-view > div.notion-collection_view-block > div,
-div.notion-table-view div.notion-collection_view_page-block > div {
+div.notion-table-view div.notion-collection_view_page-block > div,
+div.notion-calendar-view
+  > div.notion-collection_view_page-block
+  > div:first-child,
+div.notion-calendar-view > div.notion-collection_view-block > div:first-child,
+div.notion-calendar-view
+  > div.notion-collection_view-block
+  > div:last-child
+  > div
+  > div,
+div.notion-board-view > div > div:first-child,
+div.notion-board-view .notion-board-group > div a {
   background: var(--bg) !important;
 }
 /* div.notion-calendar-view div.notion-collection_view_page-block > div */
@@ -269,9 +286,9 @@ div.notion-calendar-view div.notion-collection-item > a {
 div.notion-peek-renderer > div:nth-child(2) {
   background: var(--bg) !important;
 
-  -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
+  /* -webkit-animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1)
     both;
-  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+  animation: scale-up-center 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both; */
 }
 
 #notion-app
