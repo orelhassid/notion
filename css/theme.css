@@ -282,6 +282,18 @@ div.notion-calendar-view div.notion-collection-item > a {
   background: var(--bg) !important;
 }
 
+/* -------------------------------- Timeline View -------------------------------- */
+.notion-timeline-view,
+div.notion-timeline-view > div:nth-child(3), /* Header */
+div.notion-timeline-view > div:nth-child(4) div, /* Header */
+.notion-timeline-view .notion-collection_view_page-block, /* Left Panel*/
+.notion-timeline-view .notion-collection_view_page-block > div, /* Left Panel*/
+.notion-timeline-view .notion-timeline-item-row > div:first-child /* Cards */ {
+  background: var(--bg) !important;
+}
+.notion-timeline-view > div:first-child > div {
+  background: var(--bg2) !important;
+}
 /* -------------------------------- 📌 Page Peeker 📌 ------------------------------- */
 div.notion-peek-renderer > div:nth-child(2) {
   background: var(--bg) !important;
