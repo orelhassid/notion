@@ -7,7 +7,8 @@ div.notion-frame div > img {
 
 div > svg.dots,
 div.notion-frame div > svg.dragHandle,
-div.notion-collection-view-item-add svg {
+div.notion-collection-view-item-add svg,
+.notion-topbar div > img {
   margin-left: 0px !important;
 }
 /* ButtonsIcon that need to be centered. */
@@ -39,19 +40,14 @@ div.notion-frame > div:nth-child(2) > div:first-child {
   direction: rtl;
 }
 
-/* Cover button position */
-div.notion-frame
-  > div:nth-child(2)
-  > div:first-child
-  > div
-  > div:last-child
-  > div {
+/* Page Title */
+div[placeholder="Untitled"] {
   left: 0px;
   right: auto !important;
 }
 
 /* -------------------------------- 📌 Page Content 📌 -------------------------------- */
-div.notion-frame div:nth-child(2) > div:not(first-child) {
+div.notion-frame > div:nth-child(2) > div:not(first-child) {
   direction: rtl !important;
 }
 
@@ -104,6 +100,42 @@ div.notion-list-view div.notion-collection-item a > div > div:nth-child(2) {
   margin-right: 0 !important;
   margin-left: auto;
 }
+
+/* -------------------------------- Timeline View  -------------------------------- */
+div.notion-timeline-view {
+  direction: ltr !important;
+}
+div.notion-timeline-view > div .notion-collection_view_page-block,
+div.notion-timeline-view .notion-timeline-item-properties .notranslate {
+  direction: rtl;
+}
+
+div.notion-timeline-view
+  > div:nth-child(5)
+  > div
+  > div:nth-child(5)
+  > div
+  > div {
+  justify-content: flex-start !important;
+  padding-right: 0px !important;
+  flex-direction: row-reverse;
+}
+
+div.notion-timeline-view .notion-collection-item a {
+  left: 6px;
+  right: auto !important;
+}
+
+.notion-overlay-container.notion-default-overlay-container .notranslate {
+  text-align: right !important;
+  direction: rtl;
+}
+
+/* .notion-timeline-view .notion-timeline-item-properties {
+}
+.notion-timeline-view .notion-collection_view_page-block {
+} */
+
 /* -------------------------------- 📌 Page Peeker 📌 ------------------------------- */
 div.notion-peek-renderer > div:nth-child(2) > div.notion-scroller.vertical {
   direction: rtl;
@@ -152,9 +184,9 @@ div.notion-page-controls div[role="button"] > svg {
 }
 
 /* Code Blocks */
-.notion-code-block {
+div.line-numbers.notion-code-block .notranslate {
   direction: ltr !important;
-  text-align: left;
+  text-align: left !important;
 }
 
 .notion-numbered_list-block div,
