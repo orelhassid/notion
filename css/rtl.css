@@ -189,6 +189,10 @@ div.line-numbers.notion-code-block .notranslate {
   text-align: left !important;
 }
 
+.notion-code-block > div {
+  direction: ltr !important;
+  text-align: left !important;
+}
 .notion-numbered_list-block div,
 .notion-bulleted_list-block div,
 .notion-toggle-block div,
