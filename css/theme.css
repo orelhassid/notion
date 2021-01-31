@@ -435,7 +435,7 @@ ul.dropdown-content {
   color: #fff;
   background-color: #515151;
   position: absolute;
-  left: 6px;
+  right: 6px;
   border-radius: 4px;
   box-shadow: var(--elevation6);
   padding-top: 8px;

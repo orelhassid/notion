@@ -13,3 +13,8 @@ div.notion-topbar-mobile > div:nth-child(1n).toggle-mode {
 div#topbar-features {
   display: block !important;
 }
+
+div.notion-topbar > div > .notranslate {
+  flex-grow: 1 !important;
+  justify-content: flex-end;
+}
