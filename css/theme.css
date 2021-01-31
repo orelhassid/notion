@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Acme&family=Bebas+Neue&family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 
+@font-face {
+  font-family: Menlo;
+  src: url("../fonts/Menlo-Regular.ttf");
+}
+
 /* -------------------------------- 📌 Variables: colors, shadow 📌 -------------------------------- */
 :root {
   --fontFamily: "Roboto Condensed", "Rubik", cursive;
