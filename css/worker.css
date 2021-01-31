@@ -16,5 +16,6 @@ div#topbar-features {
 
 div.notion-topbar > div > .notranslate {
   flex-grow: 1 !important;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  direction: rtl;
 }
