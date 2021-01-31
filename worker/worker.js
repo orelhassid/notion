@@ -18,6 +18,9 @@ const SLUG_TO_PAGE = {
 const PAGE_TITLE = "";
 const PAGE_DESCRIPTION = "";
 
+const THEME = "";
+/* dark, light, palenight, solarized_light, night_owl */
+
 /* CONFIGURATION ENDS HERE */
 
 const PAGE_TO_SLUG = {};
@@ -130,7 +133,7 @@ async function fetchAndApply(request) {
     response.headers.delete("X-Content-Security-Policy");
   }
 
-  return appendJavascript(response, SLUG_TO_PAGE, request);
+  return appendJavascript(response, SLUG_TO_PAGE, request, THEME);
 }
 
 class MetaRewriter {
@@ -202,11 +205,14 @@ class BodyRewriter {
           const features = document.createElement("div");
           features.className = "topbar-features";
           features.id = "topbar-features";
+          if ("${THEME}") localStorage.setItem("oh_theme", "${THEME}");
 
           features.innerHTML =
             '<div class="theme-container"><button id="dropdown-button" class="dropdown-button"><span>Theme</span></button><ul class="dropdown-content" id="dropdown-content"><li id="dark">Dark</li><li id="light">Light</li><li id="palenight">Palenight</li><li id="solarized_light">Solarized Light</li><li id="night_owl">Night Owl</li></ul></div>';
 
         function createDropdown(device) {
+          const currentTheme = localStorage.getItem("oh_theme") || "${THEME}";
+          setTheme({id: currentTheme});
         const nav =
             device === "web"
             ? document.querySelector(".notion-topbar").firstChild
@@ -232,6 +238,8 @@ class BodyRewriter {
         function setTheme({ id }) {
           document.body.className = "notion-body " + id;
           document.body.dataset.theme = id;
+
+          localStorage.setItem("oh_theme", id);
           switch (id) {
             case "dark":
               onDark();
@@ -334,11 +342,11 @@ class BodyRewriter {
   }
 }
 
-async function appendJavascript(res, SLUG_TO_PAGE, request) {
+async function appendJavascript(res, SLUG_TO_PAGE, request, THEME) {
   return new HTMLRewriter()
     .on("title", new MetaRewriter())
     .on("meta", new MetaRewriter())
     .on("head", new HeadRewriter(SLUG_TO_PAGE, request))
-    .on("body", new BodyRewriter(SLUG_TO_PAGE))
+    .on("body", new BodyRewriter(SLUG_TO_PAGE, THEME))
     .transform(res);
 }
