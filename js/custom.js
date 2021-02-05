@@ -8,10 +8,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     console.log("document.readyState", document.readyState);
     console.log("DOM fully loaded and parsed", event);
 
-    let root = event.path[0]; // Set the document
-    console.log("root", { event, root, document });
+    const root = event.path[0]; // Set the document
 
-    function createCustomButton(label, className) {
+    function createCustomButton(label, className, rootParam) {
+      console.log("root", { event, root, document, rootParam });
       let contentArea = root.querySelector(".notion-page-content");
       let button = root.createElement("button");
 
@@ -37,7 +37,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       metaOg.property = iconUrl;
     }
 
-    createCustomButton("CLICK ON ME", "custom-button");
+    createCustomButton("CLICK ON ME", "custom-button", root);
     setCustomIcons(
       "https://www.flaticon.com/svg/vstatic/svg/564/564419.svg?token=exp=1612527261~hmac=4715ce4d5a25326b53448f92071da4e5"
     );
