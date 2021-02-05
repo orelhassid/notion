@@ -8,8 +8,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     console.log("document.readyState", document.readyState);
     console.log("DOM fully loaded and parsed", event);
 
-    let root = event.target; // Set the document
-    console.log("root", root);
+    let root = event.path[0]; // Set the document
+    console.log("root", { event, root, document });
 
     function createCustomButton(label, className) {
       let contentArea = root.querySelector(".notion-page-content");
