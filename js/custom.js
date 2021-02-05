@@ -9,8 +9,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let contentArea = document.querySelector(".notion-page-content");
 
       let button = document.createElement("button");
+      let span = document.createElement("span");
 
-      button.innerText = label;
+      button.appendChild(span).innerText = label;
       button.className = className;
       button.addEventListener("click", () => {
         window.location.href = "https://www.yoursite.com";

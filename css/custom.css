@@ -1,1 +1,47 @@
 /* YOU CAN ADD HERE YOUR CUSTOM CSS CODE */
+.custom-button {
+  background-color: var(--primary);
+  padding: 10px 25px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  background: transparent;
+  outline: none !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+/**** BTN No. 10 ****/
+.custom-button {
+  background: #f2f2f2;
+  border: 2px solid #000;
+  transition: all 0.3s ease;
+}
+.custom-button:before,
+.custom-button:after {
+  position: absolute;
+  content: " ";
+  z-index: -1;
+  width: 25%;
+  top: 50%;
+  height: 2px;
+  background: #000;
+  transition: all 0.3s ease;
+}
+.custom-button:before {
+  left: -15%;
+}
+.custom-button:after {
+  right: -15%;
+}
+.custom-button:hover {
+  background: #000;
+  color: #fff;
+}
+.custom-button:hover:before {
+  left: -10%;
+}
+.custom-button:hover:after {
+  right: -10%;
+}
