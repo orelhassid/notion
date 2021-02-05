@@ -1,5 +1,6 @@
 // Test
 console.log("CREATED BY OREL HASSID");
+console.log("document.readyState", document.readyState);
 if (document.readyState === "complete") {
   function createCustomButton(label, className) {
     let contentArea = document.querySelector(".notion-page-content");
@@ -15,8 +16,6 @@ if (document.readyState === "complete") {
     return button;
   }
 
-  createCustomButton("CLICK ON ME", "custom-button");
-
   function setCustomIcons(iconUrl) {
     let shortcutIcon = document.querySelector("link[rel='shortcut icon']");
     let appleIcon = document.querySelector("link[rel='apple-touch-icon']");
@@ -28,6 +27,8 @@ if (document.readyState === "complete") {
     metaTwitter.name = iconUrl;
     metaOg.property = iconUrl;
   }
+
+  createCustomButton("CLICK ON ME", "custom-button");
   setCustomIcons(
     "https://www.flaticon.com/svg/vstatic/svg/564/564419.svg?token=exp=1612527261~hmac=4715ce4d5a25326b53448f92071da4e5"
   );
