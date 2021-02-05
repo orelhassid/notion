@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         window.location.href = "https://www.yoursite.com";
       });
 
-      contentArea.append(newButton);
+      contentArea.append(button);
       return button;
     }
 
