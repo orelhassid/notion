@@ -1,17 +1,19 @@
 // Test
 console.log("CREATED BY OREL HASSID");
 window.addEventListener("DOMContentLoaded", (event) => {
-  console.log("document.readyState", document.readyState);
-  console.log("DOM fully loaded and parsed", event);
-
   if (
     document.readyState === "interactive" ||
     document.readyState === "complete"
   ) {
-    let document = event.target; // Set the document
+    console.log("document.readyState", document.readyState);
+    console.log("DOM fully loaded and parsed", event);
+
+    let root = event.target; // Set the document
+    console.log("root", root);
+
     function createCustomButton(label, className) {
-      let contentArea = document.querySelector(".notion-page-content");
-      let button = document.createElement("button");
+      let contentArea = root.querySelector(".notion-page-content");
+      let button = root.createElement("button");
 
       button.innerText = label;
       button.className = className;
@@ -24,10 +26,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     function setCustomIcons(iconUrl) {
-      let shortcutIcon = document.querySelector("link[rel='shortcut icon']");
-      let appleIcon = document.querySelector("link[rel='apple-touch-icon']");
-      let metaTwitter = document.querySelector("meta[name='twitter:image']");
-      let metaOg = document.querySelector("meta[property='og:image']");
+      let shortcutIcon = root.querySelector("link[rel='shortcut icon']");
+      let appleIcon = root.querySelector("link[rel='apple-touch-icon']");
+      let metaTwitter = root.querySelector("meta[name='twitter:image']");
+      let metaOg = root.querySelector("meta[property='og:image']");
 
       shortcutIcon.rel = iconUrl;
       appleIcon.rel = iconUrl;
