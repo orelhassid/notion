@@ -15,7 +15,7 @@
 /**** BTN No. 10 ****/
 .custom-button {
   background: #f2f2f2;
-  border: 2px solid #000;
+  border: 2px solid var(--primary);
   transition: all 0.3s ease;
 }
 .custom-button:before,
@@ -26,7 +26,7 @@
   width: 25%;
   top: 50%;
   height: 2px;
-  background: #000;
+  background: var(--primary);
   transition: all 0.3s ease;
 }
 .custom-button:before {
@@ -36,8 +36,8 @@
   right: -15%;
 }
 .custom-button:hover {
-  background: #000;
-  color: #fff;
+  background: var(--primary);
+  color: var(--text);
 }
 .custom-button:hover:before {
   left: -10%;
