@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     function createCustomButton(label, className, rootParam) {
       let contentArea = root.body.querySelector(".notion-page-content");
       let body = root.body;
+      let demo = document.getElementById("notion-app");
       console.log("contentArea", {
         event,
         root,
@@ -20,6 +21,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
         rootParam,
         contentArea,
         body,
+        demo,
       });
       let button = root.createElement("button");
 
