@@ -4,7 +4,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
   console.log("document.readyState", document.readyState);
   console.log("DOM fully loaded and parsed", event);
 
-  if (document.readyState === "complete") {
+  if (
+    document.readyState === "interactive" ||
+    document.readyState === "complete"
+  ) {
     function createCustomButton(label, className) {
       let contentArea = document.querySelector(".notion-page-content");
       let button = document.createElement("button");
