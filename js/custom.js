@@ -17,6 +17,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let contentArea = document.getElementsByClassName(
         "notion-page-content"
       )[0];
+
       console.log("contentArea", {
         event,
         root,
@@ -50,9 +51,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
       metaOg.property = iconUrl;
     }
 
-    createCustomButton("CLICK ON ME", "custom-button", root);
-    setCustomIcons(
-      "https://www.flaticon.com/svg/vstatic/svg/564/564419.svg?token=exp=1612527261~hmac=4715ce4d5a25326b53448f92071da4e5"
-    );
+    function init() {
+      createCustomButton("CLICK ON ME", "custom-button", root);
+      setCustomIcons(
+        "https://www.flaticon.com/svg/vstatic/svg/564/564419.svg?token=exp=1612527261~hmac=4715ce4d5a25326b53448f92071da4e5"
+      );
+    }
+
+    setTimeout(init, 2000);
   }
 });
