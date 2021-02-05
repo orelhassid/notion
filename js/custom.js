@@ -11,8 +11,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
     const root = event.path[0]; // Set the document
 
     function createCustomButton(label, className, rootParam) {
-      console.log("root", { event, root, document, rootParam });
       let contentArea = root.querySelector(".notion-page-content");
+      let body = root.body;
+      console.log("contentArea", {
+        event,
+        root,
+        document,
+        rootParam,
+        contentArea,
+        body,
+      });
       let button = root.createElement("button");
 
       button.innerText = label;
