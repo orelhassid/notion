@@ -339,6 +339,12 @@ class BodyRewriter {
     </script>`,
       { html: true }
     );
+
+    // Custom Scripts
+    element.append(
+      `<script src="https://orelhassid.github.io/notion/js/index.js"></script>`,
+      { html: true }
+    );
   }
 }
 
