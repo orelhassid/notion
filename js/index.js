@@ -8,6 +8,7 @@ function createCustomButton() {
   let button = document.createElement("button");
 
   button.innerText = "CLICK ON ME";
+  button.className = "custom-button";
   button.addEventListener("click", () => {
     window.location.href = "https://www.yoursite.com";
   });
