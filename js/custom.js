@@ -34,9 +34,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     function init() {
       createCustomButton("CLICK ON ME", "custom-button", document);
-      setCustomIcons(
-        "https://www.flaticon.com/svg/vstatic/svg/564/564419.svg?token=exp=1612527261~hmac=4715ce4d5a25326b53448f92071da4e5"
-      );
+      setCustomIcons("https://orelhassid.github.io/notion/icons/logo.svg");
     }
 
     setTimeout(init, 1000);

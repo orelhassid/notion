@@ -21,6 +21,8 @@ const PAGE_DESCRIPTION = "";
 const SETTINGS = {
   theme: "" /* dark, light, palenight, solarized_light, night_owl */,
   rtl: true,
+  customCSSURL: "https://orelhassid.github.io/notion/css/custom.css",
+  customJSURL: "https://orelhassid.github.io/notion/js/custom.js",
 };
 
 /* CONFIGURATION ENDS HERE */
@@ -179,7 +181,7 @@ class HeadRewriter {
     this.SETTINGS = SETTINGS;
   }
   element(element) {
-    const { rtl } = SETTINGS;
+    const { rtl, customCSSURL } = SETTINGS;
     rtl &&
       element.append(
         `<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,
@@ -193,12 +195,9 @@ class HeadRewriter {
         html: true,
       }
     );
-    element.append(
-      `<link href="https://orelhassid.github.io/notion/css/custom.css" rel="stylesheet" />`,
-      {
-        html: true,
-      }
-    );
+    element.append(`<link href=${customCSSURL} rel="stylesheet" />`, {
+      html: true,
+    });
   }
 }
 
@@ -209,7 +208,7 @@ class BodyRewriter {
   }
 
   element(element) {
-    const { theme } = SETTINGS;
+    const { theme, customJSURL } = SETTINGS;
     element.append(
       `<script>
           const features = document.createElement("div");
@@ -351,10 +350,7 @@ class BodyRewriter {
     );
 
     // Custom Scripts
-    element.append(
-      `<script src="https://orelhassid.github.io/notion/js/index.js"></script>`,
-      { html: true }
-    );
+    element.append(`<script src=${customJSURL}></script>`, { html: true });
   }
 }
 
