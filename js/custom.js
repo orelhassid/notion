@@ -58,6 +58,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
       );
     }
 
-    setTimeout(init, 2000);
+    setTimeout(init, 1000);
   }
 });
