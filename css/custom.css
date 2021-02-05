@@ -1,6 +1,5 @@
 /* YOU CAN ADD HERE YOUR CUSTOM CSS CODE */
 .custom-button {
-  background-color: var(--primary);
   padding: 10px 25px;
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -14,7 +13,7 @@
 
 /**** BTN No. 10 ****/
 .custom-button {
-  background: #f2f2f2;
+  /* background: transparent; */
   border: 2px solid var(--primary);
   transition: all 0.3s ease;
 }
