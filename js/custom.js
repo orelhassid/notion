@@ -8,6 +8,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     document.readyState === "interactive" ||
     document.readyState === "complete"
   ) {
+    let document = event.target; // Set the document
     function createCustomButton(label, className) {
       let contentArea = document.querySelector(".notion-page-content");
       let button = document.createElement("button");
