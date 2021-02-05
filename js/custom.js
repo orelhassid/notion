@@ -5,29 +5,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
     document.readyState === "interactive" ||
     document.readyState === "complete"
   ) {
-    console.log("document.readyState", document.readyState);
-    console.log("DOM fully loaded and parsed", event);
-
-    const root = event.path[0]; // Set the document
-
     function createCustomButton(label, className, rootParam) {
-      //   let contentArea = root.body.querySelector(".notion-page-content");
-      let body = root.body;
-      let demo = document.getElementById("notion-app");
-      let contentArea = document.getElementsByClassName(
-        "notion-page-content"
-      )[0];
+      let contentArea = root.body.querySelector(".notion-page-content");
 
-      console.log("contentArea", {
-        event,
-        root,
-        document,
-        rootParam,
-        contentArea,
-        body,
-        demo,
-      });
-      let button = root.createElement("button");
+      let button = document.createElement("button");
 
       button.innerText = label;
       button.className = className;
@@ -40,19 +21,19 @@ window.addEventListener("DOMContentLoaded", (event) => {
     }
 
     function setCustomIcons(iconUrl) {
-      let shortcutIcon = root.querySelector("link[rel='shortcut icon']");
-      let appleIcon = root.querySelector("link[rel='apple-touch-icon']");
-      let metaTwitter = root.querySelector("meta[name='twitter:image']");
-      let metaOg = root.querySelector("meta[property='og:image']");
+      let shortcutIcon = document.querySelector("link[rel='shortcut icon']");
+      let appleIcon = document.querySelector("link[rel='apple-touch-icon']");
+      let metaTwitter = document.querySelector("meta[name='twitter:image']");
+      let metaOg = document.querySelector("meta[property='og:image']");
 
-      shortcutIcon.rel = iconUrl;
-      appleIcon.rel = iconUrl;
-      metaTwitter.name = iconUrl;
-      metaOg.property = iconUrl;
+      shortcutIcon.href = iconUrl;
+      appleIcon.href = iconUrl;
+      metaTwitter.content = iconUrl;
+      metaOg.content = iconUrl;
     }
 
     function init() {
-      createCustomButton("CLICK ON ME", "custom-button", root);
+      createCustomButton("CLICK ON ME", "custom-button", document);
       setCustomIcons(
         "https://www.flaticon.com/svg/vstatic/svg/564/564419.svg?token=exp=1612527261~hmac=4715ce4d5a25326b53448f92071da4e5"
       );
