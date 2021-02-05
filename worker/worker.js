@@ -18,8 +18,10 @@ const SLUG_TO_PAGE = {
 const PAGE_TITLE = "";
 const PAGE_DESCRIPTION = "";
 
-const THEME = "";
-/* dark, light, palenight, solarized_light, night_owl */
+const SETTINGS = {
+  theme: "" /* dark, light, palenight, solarized_light, night_owl */,
+  rtl: true,
+};
 
 /* CONFIGURATION ENDS HERE */
 
@@ -133,7 +135,7 @@ async function fetchAndApply(request) {
     response.headers.delete("X-Content-Security-Policy");
   }
 
-  return appendJavascript(response, SLUG_TO_PAGE, request, THEME);
+  return appendJavascript(response, SLUG_TO_PAGE, request, SETTINGS);
 }
 
 class MetaRewriter {
@@ -171,22 +173,28 @@ class MetaRewriter {
 }
 
 class HeadRewriter {
-  constructor(SLUG_TO_PAGE, request) {
+  constructor(SLUG_TO_PAGE, request, SETTINGS) {
     this.SLUG_TO_PAGE = SLUG_TO_PAGE;
     this.request = request;
-
-    console.log("Slug HEAD", SLUG_TO_PAGE);
-    console.log("request HEAD", request.url);
+    this.SETTINGS = SETTINGS;
   }
   element(element) {
+    const { rtl } = SETTINGS;
+    rtl &&
+      element.append(
+        `<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,
+        {
+          html: true,
+        }
+      );
     element.append(
-      `<link href="https://orelhassid.github.io/notion/css/rtl.css" rel="stylesheet" />`,
+      `<link href="https://orelhassid.github.io/notion/css/theme.css" rel="stylesheet" />`,
       {
         html: true,
       }
     );
     element.append(
-      `<link href="https://orelhassid.github.io/notion/css/theme.css" rel="stylesheet" />`,
+      `<link href="https://orelhassid.github.io/notion/css/custom.css" rel="stylesheet" />`,
       {
         html: true,
       }
@@ -197,21 +205,23 @@ class HeadRewriter {
 class BodyRewriter {
   constructor(SLUG_TO_PAGE) {
     this.SLUG_TO_PAGE = SLUG_TO_PAGE;
+    this.SETTINGS = SETTINGS;
   }
 
   element(element) {
+    const { theme } = SETTINGS;
     element.append(
       `<script>
           const features = document.createElement("div");
           features.className = "topbar-features";
           features.id = "topbar-features";
-          if ("${THEME}") localStorage.setItem("oh_theme", "${THEME}");
+          if ("${theme}") localStorage.setItem("oh_theme", "${theme}");
 
           features.innerHTML =
             '<div class="theme-container"><button id="dropdown-button" class="dropdown-button"><span>Theme</span></button><ul class="dropdown-content" id="dropdown-content"><li id="dark">Dark</li><li id="light">Light</li><li id="palenight">Palenight</li><li id="solarized_light">Solarized Light</li><li id="night_owl">Night Owl</li></ul></div>';
 
         function createDropdown(device) {
-          const currentTheme = localStorage.getItem("oh_theme") || "${THEME}";
+          const currentTheme = localStorage.getItem("oh_theme") || "${theme}";
           setTheme({id: currentTheme});
         const nav =
             device === "web"
@@ -348,11 +358,11 @@ class BodyRewriter {
   }
 }
 
-async function appendJavascript(res, SLUG_TO_PAGE, request, THEME) {
+async function appendJavascript(res, SLUG_TO_PAGE, request, SETTINGS) {
   return new HTMLRewriter()
     .on("title", new MetaRewriter())
     .on("meta", new MetaRewriter())
-    .on("head", new HeadRewriter(SLUG_TO_PAGE, request))
-    .on("body", new BodyRewriter(SLUG_TO_PAGE, THEME))
+    .on("head", new HeadRewriter(SLUG_TO_PAGE, request, SETTINGS))
+    .on("body", new BodyRewriter(SLUG_TO_PAGE, SETTINGS))
     .transform(res);
 }
