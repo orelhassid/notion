@@ -9,7 +9,7 @@ function createCustomButton() {
 
   button.innerText = "CLICK ON ME";
   button.addEventListener("click", () => {
-    window.location.href = "www.yoursite.com";
+    window.location.href = "https://www.yoursite.com";
   });
 
   contentArea.append(newButton);
