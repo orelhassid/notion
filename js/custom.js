@@ -24,7 +24,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       let pageFrame = document.querySelector(".notion-frame");
       const pageTitle = pageTitleBlock.textContent;
 
-      pageFrame.id = pageTitle.textContent; // Set Notion Frame ID to page title
+      pageFrame.id = pageTitle; // Set Notion Frame ID to page title
     }
 
     function init() {
