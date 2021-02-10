@@ -1,5 +1,7 @@
 /* Page */
-
+#EchoPlus {
+  --coverImageHeight: 50vh;
+}
 /* YOU CAN ADD HERE YOUR CUSTOM CSS CODE */
 .custom-button {
   padding: 10px 25px;

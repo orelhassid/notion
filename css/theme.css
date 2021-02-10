@@ -390,6 +390,7 @@ div.notion-frame > div:last-child {
   position: relative;
 }
 button.dropdown-button {
+  background-color: inherit;
   -webkit-font-smoothing: antialiased;
   border: 0;
   cursor: pointer;
