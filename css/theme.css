@@ -35,6 +35,8 @@
 .notion-body {
   --bg: var(--gray0);
   --bg2: var(--gray1);
+  --bg3: rgba(55, 53, 47, 0.08);
+  --bg33: rgba(55, 53, 47, 0.16);
   --text: var(--gray6);
   --primary: #ba68c8; /* purple */
 }
@@ -400,7 +402,7 @@ button.dropdown-button {
   justify-content: center;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  padding: 6px 16px;
+  padding: 8px;
   font-size: 0.875rem;
   min-width: 64px;
   box-sizing: border-box;
@@ -420,10 +422,12 @@ button.dropdown-button {
 }
 
 button.dropdown-button:hover {
-  box-shadow: var(--elevation5);
+  /* box-shadow: var(--elevation5); */
+  background-color: var(--bg3);
 }
 button.dropdown-button:active {
-  box-shadow: var(--elevation6);
+  /* box-shadow: var(--elevation6); */
+  background-color: var(--bg33);
 }
 ul.dropdown-content {
   -webkit-font-smoothing: antialiased;
