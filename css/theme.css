@@ -402,7 +402,7 @@ button.dropdown-button {
   justify-content: center;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  padding: 8px;
+  padding: 0 8px 0 8px;
   font-size: 0.875rem;
   min-width: 64px;
   box-sizing: border-box;
