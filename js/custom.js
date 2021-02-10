@@ -17,12 +17,23 @@ window.addEventListener("DOMContentLoaded", (event) => {
       metaOg.content = iconUrl;
     }
 
+    function setClassNames() {
+      let pageTitleBlock = document.querySelector(
+        "div[placeholder='Untitled']"
+      );
+      let pageFrame = document.querySelector(".notion-frame");
+      const pageTitle = pageTitleBlock.textContent;
+
+      pageFrame.id = pageTitle.textContent; // Set Notion Frame ID to page title
+    }
+
     function init() {
       setCustomIcons(
         "https://raw.githubusercontent.com/orelhassid/notion/b3768a3322588ba0bb1b913abae02d3e7a54b2bb/icons/logo.svg"
       );
+      setClassNames();
     }
 
-    setTimeout(init, 2000);
+    setTimeout(init, 3000);
   }
 });
