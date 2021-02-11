@@ -1,1 +1,1 @@
-prop("הודעה") + if(prop("שעות") < 24, if(abs(prop("דקות")) < 60, format(prop("דקות")) + prop("Minutes_label"), format(prop("שעות")) + prop("Hours_label")), if(prop("ימים") < 30,  format(prop("ימים")) + prop("Days_label") + format(prop("חודשים")) + prop("Months_label"))) + prop("And_label") + prop("Day") + prop("Days_label")
+console.log("INDEX.JS");
