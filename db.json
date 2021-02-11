@@ -1,0 +1,15 @@
+{
+  "DOMAIN": "orelhassid.com",
+  "PAGE_TITLE": "Orel Hassid",
+  "PAGE_DESCRIPTION": "Tips and tricks about web technologies, Graphics Design, productive and more",
+  "theme": "",
+  "rtl": true,
+  "customCSSURL": "https://orelhassid.github.io/notion/css/custom.css",
+  "customJSURL": "https://orelhassid.github.io/notion/js/custom.js",
+  "SLUG_TO_PAGE": {https://github.com/orelhassid/notion
+    "": "e0da8a3ac21243f084831c280f6617e7",
+    "portfolio": "d1384d45ac9b4acf9238370e47bee8c2",
+    "blog": "6e8de670f5b441c19f6d1d79fc98691d",
+    "store": "05b37b006e47498d9b3c1cf8f53caf18",
+  }
+}
