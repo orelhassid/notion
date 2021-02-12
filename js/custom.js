@@ -16,8 +16,8 @@ function setCustomIcons(iconUrl) {
 function setClassNames() {
   // Title
   let pageTitleBlock = document.querySelector("div[placeholder='Untitled']");
-  const nav = document.querySelector(".notion-topbar")?.firstChild;
-  if (!pageTitleBlock && !nav) return;
+  const topbar = document.querySelector(".notion-topbar");
+  if (!pageTitleBlock && !topbar) return;
 
   let pageFrame = document.querySelector(".notion-frame");
   const pageTitle = pageTitleBlock.textContent;
@@ -31,6 +31,7 @@ function setClassNames() {
   pageIcon.dataset.selector = "pageIcon";
 
   // Navigation
+  const nav = document.querySelector(".notion-topbar").firstChild;
   Array.from(nav.children).forEach((el) => {
     switch (el.innerText) {
       case "Notion":
