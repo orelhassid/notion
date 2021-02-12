@@ -14,9 +14,10 @@ function setCustomIcons(iconUrl) {
 }
 
 function setClassNames() {
-  if (!pageFrame) return;
   // Title
   let pageTitleBlock = document.querySelector("div[placeholder='Untitled']");
+  if (!pageTitleBlock) return;
+
   let pageFrame = document.querySelector(".notion-frame");
   const pageTitle = pageTitleBlock.textContent;
 
