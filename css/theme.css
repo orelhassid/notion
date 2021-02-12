@@ -239,7 +239,7 @@ div.notion-board-view .notion-board-group > div a {
 /* div.notion-calendar-view div.notion-collection_view_page-block > div */
 
 /* --------------------------------- Gallery -------------------------------- */
-div.notion-gallery-view div.notion-collection-item > a {
+[data-selector="Blog"] div.notion-gallery-view div.notion-collection-item > a {
   box-shadow: var(--shadow1) !important;
   background: var(--bg) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
@@ -250,23 +250,32 @@ div.notion-gallery-view div.notion-collection-item > a {
 div.notion-gallery-view > .notion-collection_view-block {
   padding-bottom: 50px !important;
 }
-div.notion-gallery-view div.notion-collection-item > a:hover {
+[data-selector="Blog"]
+  div.notion-gallery-view
+  div.notion-collection-item
+  > a:hover {
   transform: scale(1.01);
   z-index: 10;
 }
 
-div.notion-gallery-view div.notion-collection-item > a {
+[data-selector="Blog"] div.notion-gallery-view div.notion-collection-item > a {
   box-shadow: var(--shadow1) !important;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   border-radius: 18px !important;
   overflow: hidden !important;
 }
 
-div.notion-gallery-view div.notion-collection-item > a:hover {
+[data-selector="Blog"]
+  div.notion-gallery-view
+  div.notion-collection-item
+  > a:hover {
   box-shadow: var(--shadow1_hover) !important;
 }
 
-div.notion-gallery-view div.notion-collection-item > a:active {
+[data-selector="Blog"]
+  div.notion-gallery-view
+  div.notion-collection-item
+  > a:active {
   box-shadow: var(--shadow1) !important;
 }
 
