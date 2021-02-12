@@ -7,10 +7,15 @@ async function setSettings() {
   );
 
   const result = await response.json();
-  SETTINGS = { ...result };
-  // return result;
+  console.log("INDEX.JS: result", result);
+  // SETTINGS = result;
+  return result;
 }
-setSettings();
+
+(async () => {
+  SETTINGS = await setSettings();
+  console.log(SETTINGS);
+})();
 
 console.log("INDEX.JS 2", SETTINGS);
 
