@@ -5,8 +5,9 @@ async function setSettings() {
     "https://orelhassid.github.io/notion/settings/settings-dev.json"
   );
 
-  return response.json();
+  return await response.json();
 }
+
 const SETTINGS = setSettings();
 console.log("INDEX.JS 2", SETTINGS);
 
