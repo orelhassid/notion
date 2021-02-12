@@ -93,6 +93,7 @@ function init() {
   const slugs = [];
   const pages = [];
   let redirected = false;
+
   Object.keys(SLUG_TO_PAGE).forEach((slug) => {
     const page = SLUG_TO_PAGE[slug];
     console.log("SLUG_TO_PAGE", {
@@ -114,6 +115,12 @@ function init() {
 
   function updateSlug() {
     const slug = PAGE_TO_SLUG[getPage()];
+    console.log("updateSlug", {
+      slug,
+      PAGE_TO_SLUG,
+      getPage: getPage(),
+      history,
+    });
     if (slug != null) {
       history.replaceState(history.state, "", "/" + slug);
     }
@@ -123,10 +130,7 @@ function init() {
     if (redirected) return;
     const nav = document.querySelector(".notion-topbar");
     const mobileNav = document.querySelector(".notion-topbar-mobile");
-    if (
-      (nav && nav.firstChild && nav.firstChild.firstChild) ||
-      (mobileNav && mobileNav.firstChild)
-    ) {
+    if (nav || mobileNav) {
       redirected = true;
       updateSlug();
       createDropdown(nav ? "web" : "mobile");
