@@ -14,22 +14,26 @@ function setCustomIcons(iconUrl) {
 }
 
 function setClassNames() {
+  // Title
   let pageTitleBlock = document.querySelector("div[placeholder='Untitled']");
   let pageFrame = document.querySelector(".notion-frame");
   const pageTitle = pageTitleBlock.textContent;
 
-  pageFrame.id = pageTitle; // Set Notion Frame ID to page title
+  let pageIcon = document.querySelector(
+    "div.notion-frame > div.notion-scroller.vertical.horizontal > div:nth-child(1) > div:nth-child(2) .notion-record-icon"
+  );
+
+  pageTitleBlock.dataset.selector = "pageTitle";
+  pageFrame.dataset.selector = pageTitle; // Set Notion Frame ID to page title
+  pageIcon.dataset.selector = "pageIcon";
 }
 
 const observer = new MutationObserver(function () {
   const app = document.querySelector("#notion-app");
-  console.log("MutationObserver 1", app);
+
   if (!app) return;
 
-  console.log("MutationObserver 2", window.onpopstate);
-  window.onpopstate = function () {
-    console.log("MutationObserver 3", window.onpopstate);
-  };
+  window.onpopstate = function () {};
 
   setCustomIcons(
     "https://raw.githubusercontent.com/orelhassid/notion/b3768a3322588ba0bb1b913abae02d3e7a54b2bb/icons/logo.svg"

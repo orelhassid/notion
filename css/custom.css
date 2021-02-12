@@ -1,6 +1,14 @@
 /* Page */
-#EchoPlus {
+[data-selector="EchoPlus"] {
   --coverImageHeight: 50vh;
+}
+
+[data-selector="EchoPlus"] [data-selector="pageIcon"] {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+[data-selector="pageTitle"] {
+  text-align: center !important;
 }
 /* YOU CAN ADD HERE YOUR CUSTOM CSS CODE */
 .custom-button {
