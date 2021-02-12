@@ -1,10 +1,14 @@
 console.log("INDEX.JS");
 
-const SETTINGS = fetch(
-  "https://orelhassid.github.io/notion/settings/settings-dev.json"
-)
-  .then((response) => response.json())
-  .then((data) => console.log(data));
+async function setSettings() {
+  response = await fetch(
+    "https://orelhassid.github.io/notion/settings/settings-dev.json"
+  );
+
+  return response.json();
+}
+const SETTINGS = setSettings();
+console.log("INDEX.JS 2", SETTINGS);
 
 const features = document.createElement("div");
 features.className = "topbar-features";
