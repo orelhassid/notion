@@ -10,6 +10,7 @@ async function setSettings() {
   SETTINGS = { ...result };
   // return result;
 }
+setSettings();
 
 console.log("INDEX.JS 2", SETTINGS);
 
@@ -46,6 +47,7 @@ function toggle() {
   const dropdownContent = document.getElementById("dropdown-content");
   dropdownContent.classList.toggle("show");
 }
+
 function setTheme({ id }) {
   document.body.className = "notion-body " + id;
   document.body.dataset.theme = id;
@@ -156,3 +158,5 @@ window.XMLHttpRequest.prototype.open = function () {
   arguments[1] = arguments[1].replace(SETTINGS.DOMAIN, "www.notion.so");
   return open.apply(this, [].slice.call(arguments));
 };
+
+/** ---------- Theme Control ---------- */
