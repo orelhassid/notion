@@ -3,7 +3,7 @@ console.log("INDEX.JS");
 let SETTINGS = {};
 async function setSettings() {
   response = await fetch(
-    "https://orelhassid.github.io/notion/settings/settings-dev.json"
+    "https://orelhassid.github.io/notion/settings/settings.json"
   );
 
   const result = await response.json();
@@ -135,6 +135,7 @@ function init() {
         if (slugs.includes(getSlug())) {
           const page = SLUG_TO_PAGE[getSlug()];
           if (page) {
+            console.log("replaceState: page", page);
             history.replaceState(history.state, "bypass", "/" + page);
           }
         }
