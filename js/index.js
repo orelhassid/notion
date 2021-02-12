@@ -5,7 +5,8 @@ async function setSettings() {
     "https://orelhassid.github.io/notion/settings/settings-dev.json"
   );
 
-  return await response.json();
+  const result = await response.json();
+  return result;
 }
 
 const SETTINGS = setSettings();
