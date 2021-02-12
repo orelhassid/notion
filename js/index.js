@@ -95,6 +95,11 @@ function init() {
   let redirected = false;
   Object.keys(SLUG_TO_PAGE).forEach((slug) => {
     const page = SLUG_TO_PAGE[slug];
+    console.log("SLUG_TO_PAGE", {
+      SLUG_TO_PAGE,
+      slug,
+      page,
+    });
     slugs.push(slug);
     pages.push(page);
     PAGE_TO_SLUG[page] = slug;
