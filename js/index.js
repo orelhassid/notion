@@ -1,6 +1,6 @@
 console.log("INDEX.JS");
 
-const SETTINGS = {};
+let SETTINGS = {};
 async function setSettings() {
   response = await fetch(
     "https://orelhassid.github.io/notion/settings/settings-dev.json"
@@ -100,6 +100,7 @@ function getPage() {
 function getSlug() {
   return location.pathname.slice(1);
 }
+
 function updateSlug() {
   const slug = PAGE_TO_SLUG[getPage()];
   if (slug != null) {
