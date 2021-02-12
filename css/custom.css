@@ -10,6 +10,21 @@
 [data-selector="EchoPlus"] [data-selector="pageTitle"] {
   text-align: center !important;
 }
+
+/* Feedback Gallery */
+.notion-gallery-view
+  > [data-block-id="6bb2cb95-5447-44dc-8d2e-554a2c7129d2"]
+  div.notion-collection-item
+  > a {
+  border-radius: 4px !important;
+}
+.notion-gallery-view
+  > [data-block-id="6bb2cb95-5447-44dc-8d2e-554a2c7129d2"]
+  div.notion-collection-item
+  > a:hover {
+  box-shadow: var(--shadow1) !important;
+}
+
 /* YOU CAN ADD HERE YOUR CUSTOM CSS CODE */
 .custom-button {
   padding: 10px 25px;
