@@ -20,7 +20,6 @@ async function setSettings() {
 })();
 
 function init() {
-  console.log("Init", SETTINGS);
   const features = document.createElement("div");
   features.className = "topbar-features";
   features.id = "topbar-features";

@@ -23,7 +23,13 @@ function setClassNames() {
 
 const observer = new MutationObserver(function () {
   const app = document.querySelector("#notion-app");
+  console.log("MutationObserver 1", app);
   if (!app) return;
+
+  console.log("MutationObserver 2", window.onpopstate);
+  window.onpopstate = function () {
+    console.log("MutationObserver 3", window.onpopstate);
+  };
 
   setCustomIcons(
     "https://raw.githubusercontent.com/orelhassid/notion/b3768a3322588ba0bb1b913abae02d3e7a54b2bb/icons/logo.svg"
