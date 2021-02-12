@@ -130,7 +130,10 @@ function init() {
     if (redirected) return;
     const nav = document.querySelector(".notion-topbar");
     const mobileNav = document.querySelector(".notion-topbar-mobile");
-    if (nav || mobileNav) {
+    if (
+      (nav && nav.firstChild && nav.firstChild.firstChild) ||
+      (mobileNav && mobileNav.firstChild)
+    ) {
       redirected = true;
       updateSlug();
       createDropdown(nav ? "web" : "mobile");
