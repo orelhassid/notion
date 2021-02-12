@@ -107,6 +107,12 @@ div.notion-scroller::-webkit-scrollbar-thumb {
   background-color: var(--bg2);
 }
 
+[data-selector="notion-logo"],
+/* [data-selector="notion-search"], */
+[data-selector="notion-comment"] {
+  display: none !important;
+}
+
 #notion-app
   > div
   > div.notion-overlay-container.notion-default-overlay-container
