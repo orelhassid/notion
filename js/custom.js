@@ -28,6 +28,22 @@ function setClassNames() {
   pageTitleBlock.dataset.selector = "pageTitle";
   pageFrame.dataset.selector = pageTitle; // Set Notion Frame ID to page title
   pageIcon.dataset.selector = "pageIcon";
+
+  // Navigation
+  const nav = document.querySelector(".notion-topbar").firstChild;
+  Array.from(nav.children).forEach((el) => {
+    switch (el.innerText) {
+      case "Notion":
+        el.dataset.selector = "notion-logo";
+        break;
+      case "Search":
+        el.dataset.selector = "notion-search";
+        break;
+      case "Comment":
+        el.dataset.selector = "notion-comment";
+        break;
+    }
+  });
 }
 
 const observer = new MutationObserver(function () {
