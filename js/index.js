@@ -1,15 +1,16 @@
 console.log("INDEX.JS");
 
+const SETTINGS = {};
 async function setSettings() {
   response = await fetch(
     "https://orelhassid.github.io/notion/settings/settings-dev.json"
   );
 
   const result = await response.json();
-  return result;
+  SETTINGS = { ...result };
+  // return result;
 }
 
-const SETTINGS = setSettings();
 console.log("INDEX.JS 2", SETTINGS);
 
 const features = document.createElement("div");
