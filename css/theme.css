@@ -247,6 +247,9 @@ div.notion-gallery-view div.notion-collection-item > a {
   overflow: hidden !important;
 }
 
+div.notion-gallery-view > .notion-collection_view-block {
+  padding-bottom: 50px !important;
+}
 div.notion-gallery-view div.notion-collection-item > a:hover {
   transform: scale(1.01);
   z-index: 10;
