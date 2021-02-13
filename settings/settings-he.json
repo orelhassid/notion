@@ -1,14 +1,14 @@
 {
   "DOMAIN": "he.orelhassid.com",
-  "PAGE_TITLE": "Orel Hassid",
-  "PAGE_DESCRIPTION": "Tips and tricks about web technologies, Graphics Design, productive and more",
+  "PAGE_TITLE": "אוראל חסיד",
+  "PAGE_DESCRIPTION": "מפתח אתרים ומעצב גרפי שאוהב ליצור תוכן ולבנות מערכות ב Notion",
   "IMAGE": "https://orelhassid.github.io/notion/icons/logo.svg",
   "theme": "dark",
   "rtl": true,
   "customCSSURL": "https://orelhassid.github.io/notion/css/custom.css",
   "customJSURL": "https://orelhassid.github.io/notion/js/custom.js",
   "SLUG_TO_PAGE": {
-    "": "e0da8a3ac21243f084831c280f6617e7",
+    "": "b8cb4350df4a42e4b438e828edba49ae",
     "portfolio": "051ccc2b693a4b8eaef9d26e5e6a3a2c",
     "blog": "b6e160ff746c4c078081ef9999618c52",
     "store": "364b3342901644d7a60afe9bd4dd0675",
