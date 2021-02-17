@@ -1,0 +1,11 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="orelhassid-facebook">
+<style>
+#orelhassid-facebook {
+    fill: var(--primary);
+    color: var(--primary);
+    background-color: var(--primary);
+
+}
+</style>
+<path d="M94.75 471H256V323.187H202.25V256H256V202.25C256 157.709 292.084 121.625 336.625 121.625H390.375V188.812H363.5C348.665 188.812 336.625 187.415 336.625 202.25V256H403.812L376.937 323.187H336.625V471H417.25C446.884 471 471 446.884 471 417.25V94.75C471 65.0979 446.884 41 417.25 41H94.75C65.0979 41 41 65.0979 41 94.75V417.25C41 446.884 65.0979 471 94.75 471Z" fill="var(--primary)"/>
+</svg>
