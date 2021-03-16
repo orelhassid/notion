@@ -23,7 +23,7 @@ async function fetchData(url = "", data = {}) {
 
 fetchData(`${apiEndpoint}/sites/604eeebf4373cb53709b8912`).then(
   (siteSettings) => {
-    console.log("Settings Data 1", data); // JSON data parsed by `data.json()` call
+    console.log("siteSettings", siteSettings); // JSON data parsed by `data.json()` call
 
     const { rtl } = siteSettings;
 
