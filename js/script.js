@@ -21,12 +21,16 @@ async function fetchData(url = "", data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-fetchData(`${apiEndpoint}/sites/604eeebf4373cb53709b8912`).then((data) => {
-  console.log("Settings Data 1", data); // JSON data parsed by `data.json()` call
-  settings = data;
-});
+fetchData(`${apiEndpoint}/sites/604eeebf4373cb53709b8912`).then(
+  (siteSettings) => {
+    console.log("Settings Data 1", data); // JSON data parsed by `data.json()` call
 
-console.log("Settings 2", settings);
+    const { rtl } = siteSettings;
+
+    addStyle(`${gitHubUrl}/css/theme.css`);
+    rtl && addStyle(`${gitHubUrl}/css/rtl.css`);
+  }
+);
 
 function addStyle(href, rel) {
   let linkToAdd = document.createElement("link");
@@ -35,6 +39,3 @@ function addStyle(href, rel) {
   if (rel) linkToAdd.rel = rel;
   document.head.appendChild(linkToAdd);
 }
-
-addStyle(`${gitHubUrl}/css/theme.css`);
-addStyle(`${gitHubUrl}/css/rtl.css`);
