@@ -21,16 +21,14 @@ async function fetchData(url = "", data = {}) {
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
-fetchData(`${apiEndpoint}/sites/604eeebf4373cb53709b8912`).then(
-  (siteSettings) => {
-    console.log("siteSettings", siteSettings); // JSON data parsed by `data.json()` call
+fetchData(`${apiEndpoint}/sites/dev.orelhassid.com`).then((siteSettings) => {
+  console.log("siteSettings", siteSettings); // JSON data parsed by `data.json()` call
 
-    const { rtl } = siteSettings;
+  const { rtl } = siteSettings;
 
-    addStyle(`${gitHubUrl}/css/theme.css`);
-    rtl && addStyle(`${gitHubUrl}/css/rtl.css`);
-  }
-);
+  addStyle(`${gitHubUrl}/css/theme.css`);
+  rtl && addStyle(`${gitHubUrl}/css/rtl.css`);
+});
 
 function addStyle(href, rel) {
   let linkToAdd = document.createElement("link");
