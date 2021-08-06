@@ -74,7 +74,7 @@ body[data-theme="night_owl"] {
 }
 
 /* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
-.notion-focusable {
+div.notion-topbar div.notion-focusable[role="button"] {
   display: none;
 }
 div.notion-frame {
