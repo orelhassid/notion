@@ -74,8 +74,8 @@ body[data-theme="night_owl"] {
 }
 
 /* -------------------------------- 📌 Global Effects 📌 -------------------------------- */
-div.notion-topbar div.notion-focusable[role="button"] {
-  display: none;
+div.notion-topbar > div > div.notion-focusable[role="button"] {
+  display: none !important;
 }
 div.notion-frame {
   background: var(--bg) !important;
